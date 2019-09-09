@@ -14,9 +14,30 @@ class Login extends Component {
         this.setState(newState);
     }
 
+    handleLogin = (event) => {
+        event.preventDefault();
+        UserDataManager.checkUsers(this.state.email, this.state.password).then(checkedUsers => {
+            if (checkedUsers.length > 0) {
+                sessionStorage.setItem("activeUser", checkedUsers[0])
+                this.props.history.push("/skills");
+                console.log("successful login");
+            } else {
+                alert("Invalid email or password.");
+            }
+        })
+    }
 
+    componentDidMount() {
+        // get all users and store in state
+        UserDataManager.getAllUsers().then(users => {
+            this.setState({
+                users: users
+            });
+        });
+    }
 
     render() {
+        console.log(this.state);
         return (
             <React.Fragment>
                 <form onSubmit={this.handleLogin}>
@@ -26,14 +47,18 @@ class Login extends Component {
                             <label htmlFor="email">Email Address</label>
                             <input
                                 onChange={this.handleFieldChange}
+                                id="email"
                                 type="email"
+                                value={this.state.email}
                                 placeholder="Email address"
                                 required
                                 autoFocus=""
                             />
                             <label htmlFor="password">Password</label>
                             <input
-                                onChange={this.handleFieldchange}
+                                onChange={this.handleFieldChange}
+                                id="password"
+                                value={this.state.password}
                                 type="password"
                                 placeholder="Password"
                                 required 
@@ -49,39 +74,3 @@ class Login extends Component {
 }
 
 export default Login;
-
-
-// import React, { Component } from "react";
-// import UserDataManager from "./UserDataManager";
-
-// import "./Login.css";
-
-// class Login extends Component {
-
-
-
-//     handleLogin = event => {
-//         event.preventDefault();
-//         UserDataManager.checkUsers(this.state.email, this.state.password).then(
-//             checkedUsers => {
-//                 if (checkedUsers.length > 0) {
-//                     sessionStorage.setItem("credentials", checkedUsers[0].id);
-//                     this.props.history.push("/chat");
-//                 } else {
-//                     alert("Invalid email or password.");
-//                 }
-//             }
-//         );
-//     };
-
-//     componentDidMount() {
-//         // getAll users and hand on
-//         UserDataManager.getAllUsers().then(users => {
-//             this.setState({
-//                 users: users
-//             });
-//         });
-//     }
-// }
-
-// export default Login;

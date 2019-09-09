@@ -17,6 +17,30 @@ class Register extends Component {
         this.toggle = this.toggle.bind(this);
     }
 
+    handleRegister = (event) => {
+        event.preventDefault();
+
+        if (this.state.password !== this.state.confirmPassword) {
+            alert("Passwords do not match.");
+        } else if (this.state.users.find(user => user.username === this.state.username)) {
+            alert("Username already taken.");
+        } else if (this.state.users.find(user => user.email === this.state.email)) {
+            alert("This email address is already associated with an account.")
+        } else {
+            const newUserObject = {
+                email: this.state.email,
+                username: this.state.username,
+                password: this.state.password,
+                skillsComplete: 0
+            };
+
+            UserDataManager.postUser(newUserObject)
+                .then(newUser => sessionStorage.setItem("activeUser", newUser))
+                .then(() => this.props.history.push("/skills"));
+        }
+
+    }
+
     toggle() {
         this.setState(prevState => ({
             modal: !prevState.modal
@@ -29,6 +53,15 @@ class Register extends Component {
         this.setState(stateToChange);
     }
 
+    componentDidMount() {
+        // get all users and set in state
+        UserDataManager.getAllUsers().then(users => {
+            this.setState({
+                users: users
+            })
+        })
+    }
+
     render() {
         return (
             <div>
@@ -39,24 +72,32 @@ class Register extends Component {
                          <form>
                              <fieldset>
                                  <div>
+                                     <label htmlFor="email">Email Address</label>
                                      <input onChange={this.handleFieldChange} type="email"
                                         id="email"
+                                        value={this.state.email}
                                         placeholder="Email address"
                                         required
                                         autoFocus=""
                                     /><br />
+                                    <label htmlFor="username">Username</label>
                                     <input onChange={this.handleFieldChange} type="text"
                                         id="username"
+                                        value={this.state.username}
                                         placeholder="Username"
                                         required
                                     /><br />
+                                    <label htmlFor="password">Password</label>
                                     <input onChange={this.handleFieldChange} type="password"
                                         id="password"
+                                        value={this.state.password}
                                         placeholder="Password"
                                         required
                                     /><br />
+                                    <label htmlFor="confirmPassword">Confirm Password</label>
                                     <input onChange={this.handleFieldChange} type="password"
                                         id="confirmPassword"
+                                        value={this.state.confirmPassword}
                                         placeholder="Confirm Password"
                                         required
                                     />
@@ -65,7 +106,7 @@ class Register extends Component {
                         </form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={this.handleRegister}>Sign up</Button>{' '}
+                        <Button onClick={this.handleRegister}>Sign Up</Button>{' '}
                         <Button onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
@@ -84,41 +125,6 @@ export default Register;
 // import './Login.css';
 
 // class RegisterModal extends React.Component {
-
-//     componentDidMount() {
-//         // getAll users and hand on
-//         UserDataManager.getAllUsers()
-//             .then(users => {
-//                 this.setState({
-//                     users: users
-//                 })
-//             })
-//     }
-
-
-
-
-
-//     handleRegister = event => {
-//         event.preventDefault();
-//         if (this.state.password !== this.state.confirmPassword) {
-//             alert("Passwords do not match.")
-//         } else if (this.state.users.find(user => user.username === this.state.username)) {
-//             alert("Username already taken.")
-//         } else if (this.state.users.find(user => user.email === this.state.email)) {
-//             alert("This email address is already associated with an account.")
-//         } else {
-//             const newUserObject = {
-//                 email: this.state.email,
-//                 username: this.state.username,
-//                 password: this.state.password
-//             }
-//             UserDataManager.postUser(newUserObject)
-//                 .then(newRegisteredUser => sessionStorage.setItem("credentials", newRegisteredUser.id))
-//                 .then(() => this.props.history.push("/chat"))
-//         }
-//     }
-
 
 //     render() {
 //         return (
