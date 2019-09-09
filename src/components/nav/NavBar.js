@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import 'bootstrap/dis/css/bootstrap.min.css';
 
 class NavBar extends Component {
     
