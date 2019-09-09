@@ -35,7 +35,7 @@ class Register extends Component {
             };
 
             UserDataManager.postUser(newUserObject)
-                .then(newUser => sessionStorage.setItem("activeUser", newUser))
+                .then(newUser => sessionStorage.setItem("activeUserId", newUser.id))
                 .then(() => this.props.history.push("/skills"));
         }
 

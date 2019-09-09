@@ -18,7 +18,7 @@ class Login extends Component {
         event.preventDefault();
         UserDataManager.checkUsers(this.state.email, this.state.password).then(checkedUsers => {
             if (checkedUsers.length > 0) {
-                sessionStorage.setItem("activeUser", checkedUsers[0])
+                sessionStorage.setItem("activeUserId", checkedUsers[0].id)
                 this.props.history.push("/skills");
                 console.log("successful login");
             } else {
