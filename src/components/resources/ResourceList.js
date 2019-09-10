@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ResourceDataManager from './ResourceDataManager';
 import ResourceModal from './ResourceModal';
+import ResourceCard from './ResourceCard';
+import SkillDataManager from '../skills/SkillDataManager';
 
 class ResourceList extends Component {
     state = {
@@ -9,20 +11,24 @@ class ResourceList extends Component {
     }
 
     componentDidMount() {
-        ResourceDataManager.getSkillAndResources(this.props.skillId).then(skill => {
-            this.setState({
-                skillName: skill.name,
-                resources: skill.resources
+        SkillDataManager.getSkill(this.props.skillId).then(skill => {
+            ResourceDataManager.getResources(this.props.skillId).then(resources => {
+                this.setState({
+                    skillName: skill.name,
+                    resources: resources
+                })
             })
         })
     }
 
     addResource = (resourceObject) => {
         return ResourceDataManager.saveResource(resourceObject).then(() => {
-            ResourceDataManager.getSkillAndResources(this.props.skillId).then(skill => {
-                this.setState({
-                    skillName: skill.name,
-                    resrouces: skill.resources
+            SkillDataManager.getSkill(this.props.skillId).then(skill => {
+                ResourceDataManager.getResources(this.props.skillId).then(resources => {
+                    this.setState({
+                        skillName: skill.name,
+                        resources: resources
+                    });
                 });
             });
         });
@@ -35,7 +41,15 @@ class ResourceList extends Component {
                 <h1>Skill Name</h1>
                 <div className="progress-bar-container">Progress Bar</div>
                 <ResourceModal {...this.props} addResource={this.addResource} />
-                <div className="resource-card-container">Resource Cards</div>
+                <div className="resource-card-container">
+                    {this.state.resources.map(resource =>
+                        <ResourceCard
+                            key={resource.id}
+                            resource={resource}
+                            {...this.props}
+                        />
+                    )}
+                </div>
             </React.Fragment>
         )
     }

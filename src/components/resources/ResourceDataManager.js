@@ -7,6 +7,11 @@ export default {
             .then(response => response.json());
     },
 
+    getResources(skillId) {
+        return fetch(`${remoteURL}/resources/?skillId=${skillId}&&_expand=type`)
+            .then(response => response.json());
+    },
+
     saveResource(resourceObject) {
         return fetch(`${remoteURL}/resources`, {
             method: "POST",
