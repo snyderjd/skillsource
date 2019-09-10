@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import Auth from './auth/Auth';
+import SkillList from './skills/SkillList';
 
 class ApplicationViews extends Component {
 
-    isAuthenticated = () => sessionStorage.getItem("activeUser") !== null
+    isAuthenticated = () => sessionStorage.getItem("activeUserId") !== null
     
     render() {
         return (
@@ -12,6 +13,13 @@ class ApplicationViews extends Component {
                 
                 <Route exact path="/" render={props => {
                     return <Auth {...props} />;
+                }} />
+
+                <Route exact path="/skills" render={props => {
+                    if (this.isAuthenticated()) {
+                        return <SkillList {...props} />
+                    }
+                    return <Auth {...props} />
                 }} />
 
             </React.Fragment>
