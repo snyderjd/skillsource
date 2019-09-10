@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-class SkillDelete extends Component {
+class ResourceDelete extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,7 +18,7 @@ class SkillDelete extends Component {
     handleDelete = (event) => {
         event.preventDefault();
         this.toggle();
-        this.props.deleteSkill(this.props.skill.id);
+        this.props.deleteResource(this.props.resource.id);
     }
 
     render() {
@@ -27,7 +27,7 @@ class SkillDelete extends Component {
                 <Button onClick={this.toggle}>Delete</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalBody>
-                        <p>Are you sure you want to delete this skill? Deleting this skill will also delete all of its associated resources.</p>
+                        <p>Are you sure you want to delete this resource?</p>
                     </ModalBody>
                     <ModalFooter>
                         <Button onClick={this.handleDelete}>I'm Sure</Button>
@@ -40,46 +40,36 @@ class SkillDelete extends Component {
 
 }
 
-export default SkillDelete;
-
-
-
-
+export default ResourceDelete;
 
 // import React, { Component } from 'react';
 // import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-// class SkillModal extends Component {
+// class SkillDelete extends Component {
 
-
-
-
-//     handleFieldChange = (event) => {
-//         const newState = {};
-//         newState[event.target.id] = event.target.value;
-//         this.setState(newState);
-//     }
-
-//     constructNewSkill = (event) => {
+//     handleDelete = (event) => {
 //         event.preventDefault();
-//         if (this.state.name === "" || this.state.description === "") {
-//             alert("Please enter a name and a description.");
-//         } else {
-//             const newSkill = {
-//                 name: this.state.name,
-//                 userId: this.state.activeUserId,
-//                 description: this.state.description,
-//                 isComplete: false,
-//                 isOriginal: true,
-//                 timesCopied: 0
-//             }
-
-//             this.props.addSkill(newSkill).then(this.toggle);
-//         }
+//         this.toggle();
+//         this.props.deleteSkill(this.props.skill.id);
 //     }
 
-
+//     render() {
+//         return (
+//             <>
+//                 <Button onClick={this.toggle}>Delete</Button>
+//                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+//                     <ModalBody>
+//                         <p>Are you sure you want to delete this skill? Deleting this skill will also delete all of its associated resources.</p>
+//                     </ModalBody>
+//                     <ModalFooter>
+//                         <Button onClick={this.handleDelete}>I'm Sure</Button>
+//                         <Button onClick={this.toggle}>Cancel</Button>
+//                     </ModalFooter>
+//                 </Modal>
+//             </>
+//         )
+//     }
 
 // }
 
-// export default SkillModal;
+// export default SkillDelete;
