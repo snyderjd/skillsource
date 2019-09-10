@@ -7,6 +7,11 @@ export default {
             .then(response => response.json());
     },
 
+    getSkill(id) {
+        return fetch(`${remoteURL}/skills/${id}`)
+            .then(response => response.json());
+    },
+
     postSkill(skillObject) {
         return fetch(`${remoteURL}/skills`, {
             method: "POST",
@@ -14,6 +19,16 @@ export default {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(skillObject)
+        }).then(response => response.json());
+    },
+
+    editSkill(editedSkill) {
+        return fetch(`${remoteURL}/skills/${editedSkill.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedSkill)
         }).then(response => response.json());
     },
 

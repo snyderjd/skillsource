@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SkillDelete from './SkillDelete';
+import SkillEdit from './SkillEdit';
 
 class SkillCard extends Component {
 
@@ -9,6 +10,7 @@ class SkillCard extends Component {
                 <div className="skill-card">
                     <h3>{this.props.skill.name}</h3>
                     <p>Description: {this.props.skill.description}</p>
+                    <SkillEdit {...this.props} editSkill={this.props.editSkill} />{' '}
                     <SkillDelete {...this.props} deleteSkill={this.props.deleteSkill} />
                 </div>
             </React.Fragment>

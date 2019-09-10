@@ -26,6 +26,14 @@ class SkillList extends Component {
         })
     }
 
+    editSkill = (id) => {
+        return SkillDataManager.editSkill(id).then(() => {
+            SkillDataManager.getSkills(this.state.activeUserId).then(skills => {
+                this.setState({ skills: skills });
+            })
+        })
+    }
+
     componentDidMount() {
         SkillDataManager.getSkills(this.state.activeUserId).then(skills => {
             this.setState({ skills: skills });
@@ -47,6 +55,7 @@ class SkillList extends Component {
                                 key={skill.id}
                                 skill={skill}
                                 deleteSkill={this.deleteSkill}
+                                editSkill={this.editSkill}
                                 {...this.props}
                             />
                         )}
@@ -55,33 +64,6 @@ class SkillList extends Component {
             </React.Fragment>
         )
     }
-
-//     render() {
-//         console.log(this.state);
-//         return (
-//             <React.Fragment>
-//                 <EventNewModal {...this.props} addEvent={this.addEvent} />
-//                 <div className="eventContainerCards">
-//                     {this.state.events.map(event => (
-//                         <EventCard
-//                             key={event.id}
-//                             event={event}
-//                             deleteEvent={this.deleteEvent}
-//                             postEditedEvent={this.postEditedEvent}
-//                             {...this.props}
-//                         />
-//                     ))}
-//                     {this.state.connections.map(connection => (
-//                         <EventFriend
-//                             key={connection.id}
-//                             connection={connection}
-//                             {...this.props}
-//                         />
-//                     ))}
-//                 </div>
-//             </React.Fragment>
-//         );
-//     }
 
 }
 
