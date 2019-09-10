@@ -40,7 +40,10 @@ class SkillModal extends Component {
                 timesCopied: 0
             }
 
-            this.props.addSkill(newSkill).then(this.toggle);
+            this.props.addSkill(newSkill).then(this.toggle).then(this.setState({
+                name: "",
+                description: ""
+            }));
         }
     }
 

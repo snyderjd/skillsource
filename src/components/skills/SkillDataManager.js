@@ -15,6 +15,13 @@ export default {
             },
             body: JSON.stringify(skillObject)
         }).then(response => response.json());
+    },
+
+    deleteSkill(id) {
+        return fetch(`${remoteURL}/skills/${id}`,
+            {
+                method: "DELETE"
+            }).then(response => response.json());
     }
 
 }
