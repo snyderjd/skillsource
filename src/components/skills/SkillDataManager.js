@@ -37,7 +37,13 @@ export default {
             {
                 method: "DELETE"
             }).then(response => response.json());
+    },
+
+    checkSkillOwner(skillId, userId) {
+        return fetch(`${remoteURL}/skills?id=${skillId}&&userId=${userId}`)
+            .then(response => response.json());
     }
+    
 
 }
 
