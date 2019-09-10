@@ -46,11 +46,6 @@ class ApplicationViews extends Component {
                     
                 }} />
 
-                {/* <Route exact path="/animals/:animalId(\d+)" render={(props) => {
-                    // pass the animalId to the AnimalDetail component
-                    return <AnimalDetail animalId={parseInt(props.match.params.animalId)} {...props} />
-                }} /> */}
-
             </React.Fragment>
         )
     }
