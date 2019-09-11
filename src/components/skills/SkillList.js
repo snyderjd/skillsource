@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
 import SkillModal from './SkillModal';
 import SkillDataManager from './SkillDataManager';
 import SkillCard from './SkillCard';
@@ -26,8 +25,8 @@ class SkillList extends Component {
         })
     }
 
-    editSkill = (id) => {
-        return SkillDataManager.editSkill(id).then(() => {
+    editSkill = (skillObject) => {
+        return SkillDataManager.editSkill(skillObject).then(() => {
             SkillDataManager.getSkills(this.state.activeUserId).then(skills => {
                 this.setState({ skills: skills });
             })

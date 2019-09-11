@@ -126,7 +126,7 @@ class ResourceModal extends Component {
                     </form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button onClick={this.buildNewResource}>Add Skill</Button>{' '}
+                    <Button onClick={this.buildNewResource}>Add Resource</Button>{' '}
                     <Button onClick={this.toggle}>Cancel</Button>
                 </ModalFooter>
                 </Modal>

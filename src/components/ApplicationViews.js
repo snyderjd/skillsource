@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Auth from './auth/Auth';
 import SkillList from './skills/SkillList';
 import ResourceList from './resources/ResourceList';
-import SkillDataManager from './skills/SkillDataManager';
+// import SkillDataManager from './skills/SkillDataManager';
 
 class ApplicationViews extends Component {
     state = {
