@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Auth from './auth/Auth';
 import SkillList from './skills/SkillList';
 import ResourceList from './resources/ResourceList';
-import SkillDataManager from './skills/SkillDataManager';
+// import SkillDataManager from './skills/SkillDataManager';
 
 class ApplicationViews extends Component {
     state = {
@@ -45,11 +45,6 @@ class ApplicationViews extends Component {
                     // }).then(() => component)
                     
                 }} />
-
-                {/* <Route exact path="/animals/:animalId(\d+)" render={(props) => {
-                    // pass the animalId to the AnimalDetail component
-                    return <AnimalDetail animalId={parseInt(props.match.params.animalId)} {...props} />
-                }} /> */}
 
             </React.Fragment>
         )
