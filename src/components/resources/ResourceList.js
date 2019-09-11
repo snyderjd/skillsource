@@ -3,13 +3,15 @@ import ResourceDataManager from './ResourceDataManager';
 import ResourceModal from './ResourceModal';
 import ResourceCard from './ResourceCard';
 import SkillDataManager from '../skills/SkillDataManager';
+import { Progress } from 'reactstrap';
 
 class ResourceList extends Component {
     state = {
         skill: {},
         resources: [],
         numResources: 0,
-        pctComplete: 0
+        pctComplete: 0,
+        numComplete: 0
     }
 
     componentDidMount() {
@@ -18,7 +20,8 @@ class ResourceList extends Component {
                 this.setState({
                     skill: skill,
                     resources: resources,
-                    numResources: resources.length
+                    numResources: resources.length,
+                    isComplete: skill.isComplete
                 })
             })
         })
@@ -66,11 +69,35 @@ class ResourceList extends Component {
         });
     }
 
+    calcProgress = () => {
+        let numComplete = 0
+
+        this.state.resources.map(resource => {
+            if (resource.isComplete) {
+                numComplete += 1;
+            }
+        })
+
+        console.log(numComplete);
+
+        const pctComplete = numComplete / this.state.numResources * 100;
+        console.log(pctComplete);
+        console.log("skill", this.state.skill);
+
+        if (pctComplete === 100) {
+            
+        }
+        return pctComplete;
+    }
+
     render() {
         return (
             <React.Fragment>
                 <h1>{this.state.skill.name}</h1>
-                <div className="progress-bar-container">Progress Bar</div>
+                <div className="progress-bar-container">Progress Bar
+                <div className="text-center">{this.calcProgress()}%</div>
+                    <Progress value={`${this.calcProgress()}`} />
+                </div>
                 <ResourceModal {...this.props} addResource={this.addResource} />
                 <div className="resource-card-container">
                     {this.state.resources.map(resource =>
