@@ -20,6 +20,12 @@ export default {
             },
             body: JSON.stringify(resourceObject)
         }).then(response => response.json());
+    },
+
+    deleteResource(id) {
+        return fetch(`${remoteURL}/resources/${id}`, {
+            method: "DELETE"
+        }).then(response => response.json());
     }
 
 }

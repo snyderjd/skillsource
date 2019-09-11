@@ -34,6 +34,19 @@ class ResourceList extends Component {
         });
     }
 
+    deleteResource = (id) => {
+        ResourceDataManager.deleteResource(id).then(() => {
+            SkillDataManager.getSkill(this.props.skillId).then(skill => {
+                ResourceDataManager.getResources(this.props.skillId).then(resources => {
+                    this.setState({
+                        skillName: skill.name,
+                        resources: resources
+                    });
+                });
+            });
+        });
+    }
+
     render() {
         console.log(this.state);
         return (
@@ -46,6 +59,7 @@ class ResourceList extends Component {
                         <ResourceCard
                             key={resource.id}
                             resource={resource}
+                            deleteResource={this.deleteResource}
                             {...this.props}
                         />
                     )}

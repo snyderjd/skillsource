@@ -16,7 +16,7 @@ class ResourceCard extends Component {
                         id=""
                     />
                     <label htmlFor="isComplete">Completed</label><br />
-                    <ResourceDelete />
+                    <ResourceDelete {...this.props} deleteResource={this.props.deleteResource} />
                 </div>
             </React.Fragment>
         )
