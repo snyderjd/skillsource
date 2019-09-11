@@ -78,16 +78,8 @@ class ResourceList extends Component {
             }
         })
 
-        console.log(numComplete);
-
         const pctComplete = numComplete / this.state.numResources * 100;
-        console.log(pctComplete);
-        console.log("skill", this.state.skill);
-
-        if (pctComplete === 100) {
-            
-        }
-        return pctComplete;
+        return Math.round(pctComplete);
     }
 
     render() {
