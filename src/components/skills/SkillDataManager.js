@@ -7,6 +7,11 @@ export default {
             .then(response => response.json());
     },
 
+    getSkillsAndResources(userId) {
+        return fetch(`${remoteURL}/skills/?userId=${userId}&&_embed=resources`)
+            .then(response => response.json());
+    },
+
     getSkill(id) {
         return fetch(`${remoteURL}/skills/${id}`)
             .then(response => response.json());

@@ -6,16 +6,19 @@ import SkillDataManager from '../skills/SkillDataManager';
 
 class ResourceList extends Component {
     state = {
-        skillName: "",
-        resources: []
+        skill: {},
+        resources: [],
+        numResources: 0,
+        pctComplete: 0
     }
 
     componentDidMount() {
         SkillDataManager.getSkill(this.props.skillId).then(skill => {
             ResourceDataManager.getResources(this.props.skillId).then(resources => {
                 this.setState({
-                    skillName: skill.name,
-                    resources: resources
+                    skill: skill,
+                    resources: resources,
+                    numResources: resources.length
                 })
             })
         })
@@ -26,8 +29,9 @@ class ResourceList extends Component {
             SkillDataManager.getSkill(this.props.skillId).then(skill => {
                 ResourceDataManager.getResources(this.props.skillId).then(resources => {
                     this.setState({
-                        skillName: skill.name,
-                        resources: resources
+                        skill: skill,
+                        resources: resources,
+                        numResources: resources.length
                     });
                 });
             });
@@ -39,8 +43,9 @@ class ResourceList extends Component {
             SkillDataManager.getSkill(this.props.skillId).then(skill => {
                 ResourceDataManager.getResources(this.props.skillId).then(resources => {
                     this.setState({
-                        skillName: skill.name,
-                        resources: resources
+                        skill: skill,
+                        resources: resources,
+                        numResources: resources.length
                     });
                 });
             });
@@ -52,8 +57,9 @@ class ResourceList extends Component {
             SkillDataManager.getSkill(this.props.skillId).then(skill => {
                 ResourceDataManager.getResources(this.props.skillId).then(resources => {
                     this.setState({
-                        skillName: skill.name,
-                        resources: resources
+                        skill: skill,
+                        resources: resources,
+                        numResources: resources.length
                     });
                 });
             });
@@ -61,10 +67,9 @@ class ResourceList extends Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <React.Fragment>
-                <h1>Skill Name</h1>
+                <h1>{this.state.skill.name}</h1>
                 <div className="progress-bar-container">Progress Bar</div>
                 <ResourceModal {...this.props} addResource={this.addResource} />
                 <div className="resource-card-container">

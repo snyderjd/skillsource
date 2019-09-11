@@ -11,7 +11,7 @@ class SkillList extends Component {
 
     addSkill = (skillObject) => {
         return SkillDataManager.postSkill(skillObject).then(() => {
-            SkillDataManager.getSkills(this.state.activeUserId).then(skills => {
+            SkillDataManager.getSkillsAndResources(this.state.activeUserId).then(skills => {
                 this.setState({ skills: skills });
             });
         });
@@ -19,24 +19,24 @@ class SkillList extends Component {
 
     deleteSkill = (id) => {
         SkillDataManager.deleteSkill(id).then(() => {
-            SkillDataManager.getSkills(this.state.activeUserId).then(skills => {
+            SkillDataManager.getSkillsAndResources(this.state.activeUserId).then(skills => {
                 this.setState({ skills: skills });
-            })
-        })
+            });
+        });
     }
 
     editSkill = (skillObject) => {
         return SkillDataManager.editSkill(skillObject).then(() => {
-            SkillDataManager.getSkills(this.state.activeUserId).then(skills => {
+            SkillDataManager.getSkillsAndResources(this.state.activeUserId).then(skills => {
                 this.setState({ skills: skills });
-            })
-        })
+            });
+        });
     }
 
     componentDidMount() {
-        SkillDataManager.getSkills(this.state.activeUserId).then(skills => {
+        SkillDataManager.getSkillsAndResources(this.state.activeUserId).then(skills => {
             this.setState({ skills: skills });
-        })
+        });
     }
 
     render() {
