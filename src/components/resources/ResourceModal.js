@@ -7,7 +7,7 @@ class ResourceModal extends Component {
         super(props);
         this.state = {
             modal: false,
-            typeId: 0,
+            typeId: 1,
             otherType: "",
             title: "",
             summary: "",
@@ -26,7 +26,8 @@ class ResourceModal extends Component {
     handleFieldChange = (event) => {
         const newState = {};
         newState[event.target.id] = event.target.value;
-        this.setState(newState);
+        this.setState(newState)
+        console.log("handleFieldChange", this.state);
     }
 
     buildNewResource = (event) => {
@@ -46,7 +47,7 @@ class ResourceModal extends Component {
             }
 
             this.props.addResource(newResource).then(this.toggle).then(this.setState({
-                typeId: 0,
+                typeId: 1,
                 otherType: "",
                 title: "",
                 summary: "",

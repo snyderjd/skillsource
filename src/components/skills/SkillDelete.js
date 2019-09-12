@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import ResourceDataManager from '../resources/ResourceDataManager';
 
 class SkillDelete extends Component {
     constructor(props) {
@@ -15,12 +16,26 @@ class SkillDelete extends Component {
         this.setState(prevState => ({ modal: !prevState.modal }));
     }
 
+    // Get the resources associated with a particular skill and delete them
+    deleteResources = (skillId) => {
+        ResourceDataManager.getResources(skillId).then(resources => {
+            resources.map(resource => {
+                ResourceDataManager.deleteResource(resource.id);
+            })
+        })
+    }
+
+    // Delete the resources, delete the skill, and close the modal
     handleDelete = (event) => {
         event.preventDefault();
         this.toggle();
+
+        this.deleteResources(this.props.skill.id);
+
         this.props.deleteSkill(this.props.skill.id);
     }
 
+    // Make user confirm that they really want to delete a skill and invoke handleDelete to delete the associated resources and the skill
     render() {
         return (
             <>

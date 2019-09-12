@@ -31,24 +31,6 @@ class ResourceEdit extends Component {
         this.setState(newState);
     }
 
-    // updateSkill = (event) => {
-    //     event.preventDefault();
-    //     if (this.state.name === "" || this.state.description === "") {
-    //         alert("Please enter a name and a description.");
-    //     } else {
-    //         const updatedSkill = {
-    //             id: this.props.skill.id,
-    //             name: this.state.name,
-    //             userId: this.props.skill.userId,
-    //             description: this.state.description,
-    //             isComplete: this.props.skill.isComplete,
-    //             isOriginal: this.props.skill.isOriginal,
-    //             timesCopied: this.props.skill.timesCopied
-    //         };
-    //         this.props.editSkill(updatedSkill).then(this.toggle);
-    //     }
-    // }
-
     updateResource = (event) => {
         event.preventDefault();
         if (this.state.title === "" || this.state.summary === "" || this.state.url === "") {
@@ -77,33 +59,6 @@ class ResourceEdit extends Component {
         }
     }
 
-//     buildNewResource = (event) => {
-//         event.preventDefault();
-//         if (this.state.title === "" || this.state.summary === "" || this.state.url === "") {
-//             alert("Please ensure all fields are filled out.");
-//         } else {
-//             const newResource = {
-//                 skillId: this.props.skillId,
-//                 typeId: parseInt(this.state.typeId),
-//                 otherType: this.state.otherType,
-//                 title: this.state.title,
-//                 summary: this.state.summary,
-//                 url: this.state.url,
-//                 content: this.state.content,
-//                 isComplete: false
-//             }
-
-//             this.props.addResource(newResource).then(this.toggle).then(this.setState({
-//                 typeId: 0,
-//                 otherType: "",
-//                 title: "",
-//                 summary: "",
-//                 url: "",
-//                 content: ""
-//             }));
-//         }
-//     }
-
     componentDidMount() {
         ResourceDataManager.getResource(this.props.resource.id).then(resource => {
             TypeDataManager.getTypes().then(types => {
@@ -122,8 +77,6 @@ class ResourceEdit extends Component {
     }
 
     render() {
-        console.log(this.props);
-        console.log(this.state);
         return (
             <>
                 <Button onClick={this.toggle}>

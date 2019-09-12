@@ -1,9 +1,15 @@
 const remoteURL = "http://localhost:5002"
 
+// GET, POST, PUT, or DELETE skills in the database with various arguments and json query parameters
 export default {
 
     getSkills(userId) {
         return fetch(`${remoteURL}/skills/?userId=${userId}`)
+            .then(response => response.json());
+    },
+
+    getSkillsAndResources(userId) {
+        return fetch(`${remoteURL}/skills/?userId=${userId}&&_embed=resources`)
             .then(response => response.json());
     },
 
