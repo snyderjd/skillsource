@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import Auth from './auth/Auth';
 import SkillList from './skills/SkillList';
 import ResourceList from './resources/ResourceList';
-// import SkillDataManager from './skills/SkillDataManager';
+import Search from './search/Search';
 
 class ApplicationViews extends Component {
     state = {
@@ -46,6 +46,13 @@ class ApplicationViews extends Component {
                     //     }
                     // }).then(() => component)
                     
+                }} />
+
+                <Route exact path="/search" render={props => {
+                    if (this.isAuthenticated()) {
+                        return <Search {...props} />
+                    }
+                    return <Auth {...props} />
                 }} />
 
             </React.Fragment>

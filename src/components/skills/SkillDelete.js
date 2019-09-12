@@ -20,7 +20,7 @@ class SkillDelete extends Component {
     deleteResources = (skillId) => {
         ResourceDataManager.getResources(skillId).then(resources => {
             resources.map(resource => {
-                ResourceDataManager.deleteResource(resource.id);
+                return ResourceDataManager.deleteResource(resource.id);
             })
         })
     }

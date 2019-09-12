@@ -47,6 +47,8 @@ class SkillModal extends Component {
                 name: "",
                 description: ""
             }));
+
+
         }
     }
 
