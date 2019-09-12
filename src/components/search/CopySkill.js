@@ -8,6 +8,8 @@ class CopySkill extends Component {
         this.state = {
             modal: false,
             activeUserId: parseInt(sessionStorage.getItem("activeUserId")),
+            newSkillId: 0,
+            resources: []
         }
 
         this.toggle = this.toggle.bind(this);
@@ -17,23 +19,9 @@ class CopySkill extends Component {
         this.setState(prevState => ({ modal: !prevState.modal }));
     }
 
-    componentDidMount() {
-        console.log("compDidMount", this.props);
-        SkillDataManager.getSkill(this.props.skill.id).then(skill => {
-            this.setState({
-                originalSkill: skill
-            });
-        })
-    }
-
-    // componentDidMount() {
-    //     SkillDataManager.getSkill(this.props.skill.id).then(skill => {
-    //         this.setState({
-    //             name: skill.name,
-    //             description: skill.description
-    //         });
-    //     });
-    // }
+    //   this.setState((prevState, props) => ({
+    //       counter: prevState.counter + props.increment
+    //   }));
 
     cloneSkill = (event) => {
         event.preventDefault();
@@ -63,28 +51,53 @@ class CopySkill extends Component {
 
         this.props.editOriginalSkill(updatedSkill);
 
-        this.props.copySkill(newSkill).then(this.toggle);
+        
+
+        this.props.copySkill(newSkill).then(postedSkill => {
+            this.setState({ newSkillId: postedSkill.id })
+        }).then(this.cloneResources).then(this.toggle);
+    }
+
+    cloneResources = () => {
+        console.log("cloneResources", this.props);
+
+        this.props.resources.map(resource => {
+            // create resource object and invoke function to save to the database
+            const newResource = {
+                skillId: this.state.newSkillId,
+                typeId: resource.typeId,
+                otherType: resource.otherType,
+                title: resource.title,
+                summary: resource.summary,
+                url: resource.url,
+                content: resource.content,
+                isComplete: false
+            }
+
+            this.props.copyResource(newResource)
+        })
     }
 
     render() {
-        console.log(this.state);
-        return (
-            <>
+        console.log("copySkill", this.props);
+            return (
+                <>
                 <Button onClick={this.toggle}>
-                    Add Skill
+                        Add Skill
                 </Button>
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.toggle}>Add Skill</ModalHeader>
-                    <ModalBody>
-                        Are you sure you want to copy this skill and all of its associated resources?
+                    <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                        <ModalHeader toggle={this.toggle}>Add Skill</ModalHeader>
+                        <ModalBody>
+                            Are you sure you want to copy this skill and all of its associated resources?
                     </ModalBody>
-                    <ModalFooter>
-                        <Button onClick={this.cloneSkill}>Yes</Button>
-                        <Button onClick={this.toggle}>No</Button>
-                    </ModalFooter>
-                </Modal>
-            </>
-        )
+                        <ModalFooter>
+                            <Button onClick={this.cloneSkill}>Yes</Button>
+                            <Button onClick={this.toggle}>No</Button>
+                        </ModalFooter>
+                    </Modal>
+                </>
+            )
+
     }
 }
 

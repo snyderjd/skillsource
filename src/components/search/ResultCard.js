@@ -22,12 +22,30 @@ class ResultCard extends Component {
     }
 
     copySkill = (skillObject) => {
-        return SkillDataManager.postSkill(skillObject)
+        return SkillDataManager.postSkill(skillObject);
     }
 
     editOriginalSkill = (skillObject) => {
-        return SkillDataManager.editSkill(skillObject)
+        return SkillDataManager.editSkill(skillObject);
     }
+
+    copyResource = (resourceObject) => {
+        return ResourceDataManager.saveResource(resourceObject);
+    }
+
+    // addResource = (resourceObject) => {
+    //     return ResourceDataManager.saveResource(resourceObject).then(() => {
+    //         SkillDataManager.getSkill(this.props.skillId).then(skill => {
+    //             ResourceDataManager.getResources(this.props.skillId).then(resources => {
+    //                 this.setState({
+    //                     skill: skill,
+    //                     resources: resources,
+    //                     numResources: resources.length
+    //                 });
+    //             });
+    //         });
+    //     });
+    // }
 
     render() {
         console.log("ResultCard", this.state);
@@ -38,12 +56,16 @@ class ResultCard extends Component {
                     <p>Description: {this.props.result.description} </p>
                     <p>Times Copied: {this.props.result.timesCopied}</p>
                     <ResultView {...this.props} resources={this.state.resources} />{' '}
+                    
+                    {this.state.resources.length > 0 &&
                     <CopySkill 
                         {...this.props} 
                         skill={this.state.skill} 
                         resources={this.state.resources}
                         copySkill={this.copySkill}
-                        editOriginalSkill={this.editOriginalSkill} />
+                        editOriginalSkill={this.editOriginalSkill}
+                        copyResource={this.copyResource} />
+                    }
                 </div>
             </React.Fragment>
         )
