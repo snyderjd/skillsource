@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import UserDataManager from '../auth/UserDataManager';
 
 class NavBar extends Component {
+    state = {
+        activeUserId: parseInt(sessionStorage.getItem("activeUserId")),
+        username: ""
+    }
     
     logout = () => {
         sessionStorage.clear();
+    }
+
+    componentDidMount() {
+        UserDataManager.getUser(this.state.activeUserId).then(user => {
+            this.setState({ username: user.username })
+        })
     }
 
     render() {
@@ -21,6 +32,7 @@ class NavBar extends Component {
                         <Link onClick={this.logout} to="/">Logout</Link>
                     </li>
                 </ul>
+                <h3>{this.state.username}</h3>
                 <h2>SkillSource</h2>
             </nav>
         )

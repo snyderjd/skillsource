@@ -16,6 +16,11 @@ export default {
         }).then(response => response.json());
     },
 
+    getUser(id) {
+        return fetch(`${remoteURL}/users/${id}`)
+            .then(response => response.json());
+    },
+
     checkUsers(email, password) {
         return fetch(`${remoteURL}/users?email=${email}&&password=${password}`)
             .then(response => response.json());

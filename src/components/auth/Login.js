@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserDataManager from './UserDataManager';
+import { Button } from 'reactstrap';
 
 class Login extends Component {
     state = {
@@ -63,7 +64,7 @@ class Login extends Component {
                                 required 
                             />
                         </div>
-                        <button type="submit">Sign In</button>
+                        <Button type="submit">Sign In</Button>
                         <p>Or</p>
                     </fieldset>
                 </form>
