@@ -5,10 +5,12 @@ import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 class SkillCard extends Component {
+    // Check to see if all the resources for a given skill are marked as complete
     checkComplete = () => {
         return this.props.skill.resources.every(resource => resource.isComplete)
     }
 
+    // Render a skill, showing its basic information on the SkillList component
     render() {
         console.log(this.props.skill);
         return (

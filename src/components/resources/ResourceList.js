@@ -87,7 +87,7 @@ class ResourceList extends Component {
             <React.Fragment>
                 <h1>{this.state.skill.name}</h1>
                 <div className="progress-bar-container">Progress Bar
-                <div className="text-center">{this.calcProgress()}%</div>
+                    <div className="text-center">{this.calcProgress()}%</div>
                     <Progress value={`${this.calcProgress()}`} />
                 </div>
                 <ResourceModal {...this.props} addResource={this.addResource} />

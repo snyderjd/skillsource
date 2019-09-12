@@ -6,7 +6,8 @@ import SkillCard from './SkillCard';
 class SkillList extends Component {
     state = {
         activeUserId: parseInt(sessionStorage.getItem("activeUserId")),
-        skills: []
+        skills: [],
+        resources: []
     }
 
     addSkill = (skillObject) => {

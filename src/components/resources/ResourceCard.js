@@ -60,6 +60,7 @@ class ResourceCard extends Component {
 
     render() {
         console.log("render", this.state);
+        console.log("render props", this.props);
         return (
             <React.Fragment>
                 <div className="resource-card">

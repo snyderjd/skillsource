@@ -1,5 +1,6 @@
 const remoteURL = "http://localhost:5002"
 
+// GET, POST, PUT, or DELETE skills in the database with various arguments and json query parameters
 export default {
 
     getSkills(userId) {

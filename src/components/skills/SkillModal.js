@@ -14,18 +14,21 @@ class SkillModal extends Component {
         this.toggle = this.toggle.bind(this);
     }
 
+    // Open and close the modal
     toggle() {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
     }
 
+    // Update state when input fields change
     handleFieldChange = (event) => {
         const newState = {};
         newState[event.target.id] = event.target.value;
         this.setState(newState);
     }
 
+    // Take user's inputs, construct an object, and save the object as a skill to the database
     constructNewSkill = (event) => {
         event.preventDefault();
         if (this.state.name === "" || this.state.description === "") {
@@ -47,6 +50,7 @@ class SkillModal extends Component {
         }
     }
 
+    // Render modal with necessary inputs to add a skill
     render() {
         return (
             <>
