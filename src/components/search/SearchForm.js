@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import SearchDataManager from './SearchDataManager';
+import { Button } from 'reactstrap';
+import ResultCard from './ResultCard';
 
 class SearchForm extends Component {
     state = {
@@ -42,14 +44,19 @@ class SearchForm extends Component {
                         value={this.state.searchInput}
                         onChange={this.handleFieldChange}
                     />
-                    <button onClick={this.executeSearch}>Search</button>
+                    <Button onClick={this.executeSearch}>Search</Button>
                 </div>
                 <div className="resultContainer">
-                    
-
+                        {this.state.results.map(result =>
+                            <ResultCard
+                                key={result.id}
+                                result={result}
+                                {...this.props}
+                            />
+                        )}
                 </div>
-                
             </React.Fragment>
+            
         )
     }
 //                 <div className="resultContainer">

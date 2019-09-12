@@ -20,7 +20,7 @@ class NavBar extends Component {
 
     render() {
         return (
-            <nav>
+            <nav className="navbar">
                 <ul>
                     <li>
                         <Link to="/skills">Skills</Link>
