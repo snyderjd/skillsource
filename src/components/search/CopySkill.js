@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import SkillDataManager from '../skills/SkillDataManager';
 
 class CopySkill extends Component {
     constructor(props) {
         super(props);
         this.state = {
             modal: false,
-            activeUserId: parseInt(sessionStorage.getItem("activeUserId"))
+            activeUserId: parseInt(sessionStorage.getItem("activeUserId")),
         }
 
         this.toggle = this.toggle.bind(this);
@@ -15,6 +16,24 @@ class CopySkill extends Component {
     toggle() {
         this.setState(prevState => ({ modal: !prevState.modal }));
     }
+
+    componentDidMount() {
+        console.log("compDidMount", this.props);
+        SkillDataManager.getSkill(this.props.skill.id).then(skill => {
+            this.setState({
+                originalSkill: skill
+            });
+        })
+    }
+
+    // componentDidMount() {
+    //     SkillDataManager.getSkill(this.props.skill.id).then(skill => {
+    //         this.setState({
+    //             name: skill.name,
+    //             description: skill.description
+    //         });
+    //     });
+    // }
 
     cloneSkill = (event) => {
         event.preventDefault();
@@ -29,28 +48,26 @@ class CopySkill extends Component {
             timesCopied: 0
         }
 
+        let newTimesCopied = this.props.skill.timesCopied + 1;
+        
+        // Get info for the original skill from props
+        const updatedSkill = {
+            id: this.props.skill.id,
+            name: this.props.skill.name,
+            userId: this.props.skill.userId,
+            description: this.props.skill.description,
+            isComplete: this.props.skill.isComplete,
+            isOriginal: this.props.skill.isOriginal,
+            timesCopied: newTimesCopied
+        }
+
+        this.props.editOriginalSkill(updatedSkill);
+
         this.props.copySkill(newSkill).then(this.toggle);
     }
 
-    // updateSkill = (event) => {
-    //     event.preventDefault();
-    //     if (this.state.name === "" || this.state.description === "") {
-    //         alert("Please enter a name and a description.");
-    //     } else {
-    //         const updatedSkill = {
-    //             id: this.props.skill.id,
-    //             name: this.state.name,
-    //             userId: this.props.skill.userId,
-    //             description: this.state.description,
-    //             isComplete: this.props.skill.isComplete,
-    //             isOriginal: this.props.skill.isOriginal,
-    //             timesCopied: this.props.skill.timesCopied
-    //         };
-    //         this.props.editSkill(updatedSkill).then(this.toggle);
-    //     }
-    // }
-
     render() {
+        console.log(this.state);
         return (
             <>
                 <Button onClick={this.toggle}>
@@ -72,39 +89,3 @@ class CopySkill extends Component {
 }
 
 export default CopySkill;
-
-// import React, { Component } from 'react';
-// import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-// import SkillDataManager from '../skills/SkillDataManager';
-// import ResultResource from './ResultResource';
-
-// class ResultView extends Component {
-
-//     render() {
-//         return (
-//             <>
-//                 <Button onClick={this.toggle}>
-//                     View Resources
-//                 </Button>
-//                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-//                     <ModalHeader toggle={this.toggle}>Resources</ModalHeader>
-//                     <ModalBody>
-//                         {this.props.resources.map(resource =>
-//                             <ResultResource
-//                                 key={resource.id}
-//                                 resource={resource}
-//                                 {...this.props}
-//                             />
-//                         )}
-//                     </ModalBody>
-//                     <ModalFooter>
-//                         <Button onClick={this.toggle}>Okay</Button>
-//                     </ModalFooter>
-//                 </Modal>
-//             </>
-//         )
-//     }
-
-// }
-
-// export default ResultView;

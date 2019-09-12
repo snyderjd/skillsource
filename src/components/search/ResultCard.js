@@ -21,15 +21,12 @@ class ResultCard extends Component {
         })
     }
 
-    // addSkill = (skillObject) => {
-    //     return SkillDataManager.postSkill(skillObject).then(() => {
-    //         SkillDataManager.getSkillsAndResources(this.state.activeUserId).then(skills => {
-    //             this.setState({ skills: skills });
-    //         });
-    //     });
-    // }
     copySkill = (skillObject) => {
         return SkillDataManager.postSkill(skillObject)
+    }
+
+    editOriginalSkill = (skillObject) => {
+        return SkillDataManager.editSkill(skillObject)
     }
 
     render() {
@@ -45,7 +42,8 @@ class ResultCard extends Component {
                         {...this.props} 
                         skill={this.state.skill} 
                         resources={this.state.resources}
-                        copySkill={this.copySkill} />
+                        copySkill={this.copySkill}
+                        editOriginalSkill={this.editOriginalSkill} />
                 </div>
             </React.Fragment>
         )
