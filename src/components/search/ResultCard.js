@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SkillDataManager from '../skills/SkillDataManager';
 import ResourceDataManager from '../resources/ResourceDataManager';
-import ResultResources from './ResultView';
+import ResultView from './ResultView';
 
 class ResultCard extends Component {
     state = {
@@ -28,7 +28,7 @@ class ResultCard extends Component {
                     <h3>{this.props.result.name}</h3>
                     <p>Description: {this.props.result.description} </p>
                     <p>Times Copied: {this.props.result.timesCopied}</p>
-                    <ResultResources {...this.props} />
+                    <ResultView {...this.props} resources={this.state.resources} />
                 </div>
             </React.Fragment>
         )

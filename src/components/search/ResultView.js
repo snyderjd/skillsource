@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import SkillDataManager from '../skills/SkillDataManager';
+import ResultResource from './ResultResource';
 
-class ResultResources extends Component {
+class ResultView extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,7 +27,13 @@ class ResultResources extends Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Resources</ModalHeader>
                     <ModalBody>
-                        ResourceList for a Skill that showed up in search results.
+                        {this.props.resources.map(resource =>
+                            <ResultResource
+                                key={resource.id}
+                                resource={resource}
+                                {...this.props}
+                            />
+                        )}
                     </ModalBody>
                     <ModalFooter>
                         <Button onClick={this.toggle}>Okay</Button>
@@ -38,7 +45,7 @@ class ResultResources extends Component {
 
 }
 
-export default ResultResources;
+export default ResultView;
 
 // import React, { Component } from 'react';
 // import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
