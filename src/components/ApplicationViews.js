@@ -13,6 +13,7 @@ class ApplicationViews extends Component {
     isAuthenticated = () => sessionStorage.getItem("activeUserId") !== null
     
     render() {
+        console.log(this.state);
         return (
             <React.Fragment>
                 
@@ -30,7 +31,9 @@ class ApplicationViews extends Component {
                 <Route exact path="/skills/:skillId(\d+)" render={props => {
                     // pass the skillId to the ResourceList component
                     if (this.isAuthenticated()) {
-                        return <ResourceList skillId={parseInt(props.match.params.skillId)} {...props} /> 
+                        return <ResourceList skillId={parseInt(props.match.params.skillId)}
+                                             activeUserId={this.state.activeUserId} 
+                                             {...props} /> 
                     }
                     return <Auth {...props} />
 

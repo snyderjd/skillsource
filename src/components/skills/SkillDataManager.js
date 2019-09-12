@@ -13,7 +13,7 @@ export default {
             .then(response => response.json());
     },
 
-    getSkill(id) {
+    getSkill(id, userId) {
         return fetch(`${remoteURL}/skills/${id}`)
             .then(response => response.json());
     },

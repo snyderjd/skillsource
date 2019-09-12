@@ -51,16 +51,12 @@ class ResourceCard extends Component {
                 isComplete: this.state.isComplete
             }
 
-            console.log("markComplete", this.state)
-            console.log("updatedResource", updatedResource);
             this.props.editResource(updatedResource);
         })
 
     }
 
     render() {
-        console.log("render", this.state);
-        console.log("render props", this.props);
         return (
             <React.Fragment>
                 <div className="resource-card">

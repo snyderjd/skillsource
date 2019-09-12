@@ -15,16 +15,23 @@ class ResourceList extends Component {
     }
 
     componentDidMount() {
-        SkillDataManager.getSkill(this.props.skillId).then(skill => {
-            ResourceDataManager.getResources(this.props.skillId).then(resources => {
-                this.setState({
-                    skill: skill,
-                    resources: resources,
-                    numResources: resources.length,
-                    isComplete: skill.isComplete
-                })
-            })
-        })
+        SkillDataManager.checkSkillOwner(this.props.skillId, this.props.activeUserId).then(skills => {
+            if (skills.length > 0) {
+
+                SkillDataManager.getSkill(this.props.skillId).then(skill => {
+                    ResourceDataManager.getResources(this.props.skillId).then(resources => {
+                        this.setState({
+                            skill: skill,
+                            resources: resources,
+                            numResources: resources.length,
+                            isComplete: skill.isComplete
+                        });
+                    });
+                });
+
+            }
+        });
+        
     }
 
     addResource = (resourceObject) => {
@@ -83,6 +90,7 @@ class ResourceList extends Component {
     }
 
     render() {
+        console.log("ResourceList props", this.props);
         return (
             <React.Fragment>
                 <h1>{this.state.skill.name}</h1>
