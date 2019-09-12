@@ -13,6 +13,7 @@ class ApplicationViews extends Component {
     isAuthenticated = () => sessionStorage.getItem("activeUserId") !== null
     
     render() {
+        console.log(this.state);
         return (
             <React.Fragment>
                 
