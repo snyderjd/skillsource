@@ -30,7 +30,7 @@ class SkillDelete extends Component {
         event.preventDefault();
         this.toggle();
 
-        this.deleteResources(this.props.skill.id);
+        // this.deleteResources(this.props.skill.id);
 
         this.props.deleteSkill(this.props.skill.id);
     }

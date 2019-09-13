@@ -33,20 +33,6 @@ class ResultCard extends Component {
         return ResourceDataManager.saveResource(resourceObject);
     }
 
-    // addResource = (resourceObject) => {
-    //     return ResourceDataManager.saveResource(resourceObject).then(() => {
-    //         SkillDataManager.getSkill(this.props.skillId).then(skill => {
-    //             ResourceDataManager.getResources(this.props.skillId).then(resources => {
-    //                 this.setState({
-    //                     skill: skill,
-    //                     resources: resources,
-    //                     numResources: resources.length
-    //                 });
-    //             });
-    //         });
-    //     });
-    // }
-
     render() {
         console.log("ResultCard", this.state);
         return (
