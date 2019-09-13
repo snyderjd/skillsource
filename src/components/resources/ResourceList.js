@@ -90,7 +90,6 @@ class ResourceList extends Component {
     }
 
     render() {
-        console.log("ResourceList props", this.props);
         return (
             <React.Fragment>
                 <h1>{this.state.skill.name}</h1>

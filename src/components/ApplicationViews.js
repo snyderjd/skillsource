@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import Auth from './auth/Auth';
 import SkillList from './skills/SkillList';
 import ResourceList from './resources/ResourceList';
-// import SkillDataManager from './skills/SkillDataManager';
+import Search from './search/Search';
 
 class ApplicationViews extends Component {
     state = {
@@ -13,7 +13,6 @@ class ApplicationViews extends Component {
     isAuthenticated = () => sessionStorage.getItem("activeUserId") !== null
     
     render() {
-        console.log(this.state);
         return (
             <React.Fragment>
                 
@@ -36,17 +35,14 @@ class ApplicationViews extends Component {
                                              {...props} /> 
                     }
                     return <Auth {...props} />
-
-                    // const skillId = parseInt(props.match.params.skillId);
-                    // let component = <Auth {...props} />
-
-                    // SkillDataManager.checkSkillOwner(skillId, this.state.activeUserId).then(skills => {
-                    //     if (skills.length > 0) {
-                    //         console.log("You own this skill")
-                    //         component = <ResourceList skillId={parseInt(props.match.params.skillId)} {...props} />
-                    //     }
-                    // }).then(() => component)
                     
+                }} />
+
+                <Route exact path="/search" render={props => {
+                    if (this.isAuthenticated()) {
+                        return <Search {...props} />
+                    }
+                    return <Auth {...props} />
                 }} />
 
             </React.Fragment>

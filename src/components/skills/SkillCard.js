@@ -12,7 +12,6 @@ class SkillCard extends Component {
 
     // Render a skill, showing its basic information on the SkillList component
     render() {
-        console.log(this.props.skill);
         return (
             <React.Fragment>
                 <div className="skill-card">
