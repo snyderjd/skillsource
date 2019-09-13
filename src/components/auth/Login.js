@@ -22,6 +22,7 @@ class Login extends Component {
                 sessionStorage.setItem("activeUserId", checkedUsers[0].id)
                 this.props.history.push("/skills");
                 console.log("successful login");
+                window.location.reload();
             } else {
                 alert("Invalid email or password.");
             }

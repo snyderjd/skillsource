@@ -35,16 +35,6 @@ class ApplicationViews extends Component {
                                              {...props} /> 
                     }
                     return <Auth {...props} />
-
-                    // const skillId = parseInt(props.match.params.skillId);
-                    // let component = <Auth {...props} />
-
-                    // SkillDataManager.checkSkillOwner(skillId, this.state.activeUserId).then(skills => {
-                    //     if (skills.length > 0) {
-                    //         console.log("You own this skill")
-                    //         component = <ResourceList skillId={parseInt(props.match.params.skillId)} {...props} />
-                    //     }
-                    // }).then(() => component)
                     
                 }} />
 

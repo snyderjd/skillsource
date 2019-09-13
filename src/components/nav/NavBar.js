@@ -7,17 +7,11 @@ class NavBar extends Component {
         activeUserId: parseInt(sessionStorage.getItem("activeUserId")),
         username: ""
     }
-    
-    logout = () => {
-        sessionStorage.clear();
-    }
 
     componentDidMount() {
-        UserDataManager.getUser(this.state.activeUserId).then(user => {
-            this.setState({ username: user.username })
-        })
+        this.setState({ username: this.props.username })
     }
-
+    
     render() {
         return (
             <nav className="navbar">
@@ -29,10 +23,10 @@ class NavBar extends Component {
                         <Link to="/search">Search</Link>
                     </li>
                     <li>
-                        <Link onClick={this.logout} to="/">Logout</Link>
+                        <Link onClick={this.props.logout} to="/">Logout</Link>
                     </li>
                 </ul>
-                <h3>{this.state.username}</h3>
+                <h3>{this.props.username}</h3>
                 <h2>SkillSource</h2>
             </nav>
         )
