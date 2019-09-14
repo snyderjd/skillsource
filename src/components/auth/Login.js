@@ -17,6 +17,7 @@ class Login extends Component {
 
     handleLogin = (event) => {
         event.preventDefault();
+        // Check database for user with email and password that matches the inputs
         UserDataManager.checkUsers(this.state.email, this.state.password).then(checkedUsers => {
             if (checkedUsers.length > 0) {
                 sessionStorage.setItem("activeUserId", checkedUsers[0].id)

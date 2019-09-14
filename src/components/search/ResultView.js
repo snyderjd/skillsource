@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import SkillDataManager from '../skills/SkillDataManager';
+// import SkillDataManager from '../skills/SkillDataManager';
 import ResultResource from './ResultResource';
 
 class ResultView extends Component {

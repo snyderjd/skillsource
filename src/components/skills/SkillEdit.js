@@ -44,6 +44,7 @@ class SkillEdit extends Component {
     }
 
     componentDidMount() {
+        // GET skill from the database and set editable properties in state
         SkillDataManager.getSkill(this.props.skill.id).then(skill => {
             this.setState({
                 name: skill.name,

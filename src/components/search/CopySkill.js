@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import SkillDataManager from '../skills/SkillDataManager';
 
 class CopySkill extends Component {
     constructor(props) {
@@ -8,8 +7,7 @@ class CopySkill extends Component {
         this.state = {
             modal: false,
             activeUserId: parseInt(sessionStorage.getItem("activeUserId")),
-            newSkillId: 0,
-            resources: []
+            newSkillId: 0
         }
 
         this.toggle = this.toggle.bind(this);
@@ -19,14 +17,21 @@ class CopySkill extends Component {
         this.setState(prevState => ({ modal: !prevState.modal }));
     }
 
-    //   this.setState((prevState, props) => ({
-    //       counter: prevState.counter + props.increment
-    //   }));
+    incrementCounter = () => {
+        // increment the copied skill's timesCopied
+        let newTimesCopied = this.props.skill.timesCopied + 1;
+        const updatedSkill = {
+            id: this.props.skill.id,
+            timesCopied: newTimesCopied
+        }
 
-    cloneSkill = (event) => {
-        event.preventDefault();
-        console.log(this.props);
+        this.props.editOriginalSkill(updatedSkill)
+    }
 
+    handleSubmit = () => {
+        this.incrementCounter();
+        
+        // create object for the copied skill with activeUser's id
         const newSkill = {
             name: this.props.skill.name,
             userId: this.state.activeUserId,
@@ -36,35 +41,18 @@ class CopySkill extends Component {
             timesCopied: 0
         }
 
-        let newTimesCopied = this.props.skill.timesCopied + 1;
-        
-        // Get info for the original skill from props
-        const updatedSkill = {
-            id: this.props.skill.id,
-            name: this.props.skill.name,
-            userId: this.props.skill.userId,
-            description: this.props.skill.description,
-            isComplete: this.props.skill.isComplete,
-            isOriginal: this.props.skill.isOriginal,
-            timesCopied: newTimesCopied
-        }
-
-        this.props.editOriginalSkill(updatedSkill);
-
-        
-
+        // post the new skill to database, pass the id to cloneResources and copy all the resources
         this.props.copySkill(newSkill).then(postedSkill => {
-            this.setState({ newSkillId: postedSkill.id })
-        }).then(this.cloneResources).then(this.toggle);
+            this.cloneResources(postedSkill.id)
+        }).then(this.toggle);
     }
 
-    cloneResources = () => {
-        console.log("cloneResources", this.props);
+    cloneResources = (skillId) => {
 
-        this.props.resources.map(resource => {
-            // create resource object and invoke function to save to the database
+        const newResources = this.props.resources.map(resource => {
+            // create resource object with the new skillId
             const newResource = {
-                skillId: this.state.newSkillId,
+                skillId: skillId,
                 typeId: resource.typeId,
                 otherType: resource.otherType,
                 title: resource.title,
@@ -74,12 +62,14 @@ class CopySkill extends Component {
                 isComplete: false
             }
 
-            this.props.copyResource(newResource)
+            return newResource;
         })
+
+        // map over the new resources and post to the database
+        newResources.map(newResource => this.props.copyResource(newResource));
     }
 
     render() {
-        console.log("copySkill", this.props);
             return (
                 <>
                 <Button onClick={this.toggle}>
@@ -91,7 +81,7 @@ class CopySkill extends Component {
                             Are you sure you want to copy this skill and all of its associated resources?
                     </ModalBody>
                         <ModalFooter>
-                            <Button onClick={this.cloneSkill}>Yes</Button>
+                            <Button onClick={this.handleSubmit}>Yes</Button>
                             <Button onClick={this.toggle}>No</Button>
                         </ModalFooter>
                     </Modal>

@@ -30,7 +30,7 @@ export default {
 
     editSkill(editedSkill) {
         return fetch(`${remoteURL}/skills/${editedSkill.id}`, {
-            method: "PUT",
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
