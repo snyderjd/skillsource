@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-// import SkillDataManager from '../skills/SkillDataManager';
 
 class CopySkill extends Component {
     constructor(props) {
@@ -19,6 +18,7 @@ class CopySkill extends Component {
     }
 
     incrementCounter = () => {
+        // increment the copied skill's timesCopied
         let newTimesCopied = this.props.skill.timesCopied + 1;
         const updatedSkill = {
             id: this.props.skill.id,
@@ -31,6 +31,7 @@ class CopySkill extends Component {
     handleSubmit = () => {
         this.incrementCounter();
         
+        // create object for the copied skill with activeUser's id
         const newSkill = {
             name: this.props.skill.name,
             userId: this.state.activeUserId,
@@ -40,18 +41,16 @@ class CopySkill extends Component {
             timesCopied: 0
         }
 
+        // post the new skill to database, pass the id to cloneResources and copy all the resources
         this.props.copySkill(newSkill).then(postedSkill => {
             this.cloneResources(postedSkill.id)
         }).then(this.toggle);
     }
 
     cloneResources = (skillId) => {
-        console.log("cloneResources state", this.state);
-        console.log("cloneResources props", this.props)
 
         const newResources = this.props.resources.map(resource => {
-            // debugger
-            // create resource object and invoke function to save to the database
+            // create resource object with the new skillId
             const newResource = {
                 skillId: skillId,
                 typeId: resource.typeId,
@@ -64,13 +63,10 @@ class CopySkill extends Component {
             }
 
             return newResource;
-            // return this.props.copyResource(newResource)
         })
 
-        console.log("newResources", newResources);
-
+        // map over the new resources and post to the database
         newResources.map(newResource => this.props.copyResource(newResource));
-
     }
 
     render() {

@@ -18,6 +18,7 @@ class ResourceCard extends Component {
     }
 
     componentDidMount() {
+        // Get resource from the database and save its properties in state
         ResourceDataManager.getResource(this.props.resource.id).then(resource => {
             TypeDataManager.getTypes().then(types => {
                 this.setState({
@@ -36,7 +37,7 @@ class ResourceCard extends Component {
 
     
     markComplete = (event) => {
-        // event.preventDefault();
+        // Build resource object with isComplete = true when user checks 'completed' and PUT to database
         this.setState({ isComplete: !this.state.isComplete }, () => {
 
             const updatedResource = {

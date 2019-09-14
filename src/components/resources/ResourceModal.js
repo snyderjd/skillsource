@@ -31,6 +31,7 @@ class ResourceModal extends Component {
     }
 
     buildNewResource = (event) => {
+        // build new resource object with inputs from the form fields and save to the database
         event.preventDefault();
         if (this.state.title === "" || this.state.summary === "" || this.state.url === "") {
             alert("Please ensure all fields are filled out.");
