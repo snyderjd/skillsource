@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './NavBar.css';
 // import UserDataManager from '../auth/UserDataManager';
 
 class NavBar extends Component {
@@ -14,20 +15,20 @@ class NavBar extends Component {
     
     render() {
         return (
-            <nav className="navbar">
-                <ul>
-                    <li>
-                        <Link to="/skills">Skills</Link>
+            <nav className="navbar navbar-expand d-flex justify-content-between">
+                <h2>SkillSource</h2>
+                <h3>{this.props.username}</h3>
+                <ul className="navbar-nav d-flex justify-content-end">
+                    <li className="nav-item">
+                        <Link to="/skills" className="nav-link">Skills</Link>
                     </li>
-                    <li>
-                        <Link to="/search">Search</Link>
+                    <li className="nav-item">
+                        <Link to="/search" className="nav-link">Search</Link>
                     </li>
-                    <li>
-                        <Link onClick={this.props.logout} to="/">Logout</Link>
+                    <li className="nav-item">
+                        <Link onClick={this.props.logout} to="/" className="nav-link">Logout</Link>
                     </li>
                 </ul>
-                <h3>{this.props.username}</h3>
-                <h2>SkillSource</h2>
             </nav>
         )
     }
