@@ -15,7 +15,7 @@ class NavBar extends Component {
     
     render() {
         return (
-            <nav className="navbar navbar-expand d-flex justify-content-between">
+            <nav className="navbar fixed-top navbar-expand d-flex justify-content-between">
                 <h2>SkillSource</h2>
                 <h3>{this.props.username}</h3>
                 <ul className="navbar-nav d-flex justify-content-end">

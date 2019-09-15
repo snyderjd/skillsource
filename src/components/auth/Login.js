@@ -66,7 +66,7 @@ class Login extends Component {
                                 required 
                             />
                         </div>
-                        <Button type="submit">Sign In</Button>
+                        <Button color="success" type="submit">Sign In</Button>
                         <p>Or</p>
                     </fieldset>
                 </form>

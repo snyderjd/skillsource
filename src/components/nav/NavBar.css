@@ -1,1 +1,31 @@
 /* Styling for NavBar */
+
+/* 
+Name: Metallic Green
+Hex: #20720D
+	
+Name: Sap Green
+Hex: #3B8927
+
+Name: May Green
+Hex: #479829
+
+Name: Yellow (Pantone)
+Hex: #FDE100
+*/
+
+.navbar {
+    z-index: 1000;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: white;
+    font-size: 14pt;
+}
+
+.nav-link:hover {
+    color: #FDE100;
+}
