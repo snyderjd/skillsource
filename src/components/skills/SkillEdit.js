@@ -56,7 +56,7 @@ class SkillEdit extends Component {
     render() {
         return (
             <>
-                <Button onClick={this.toggle}>
+                <Button onClick={this.toggle} color="success">
                     Edit
                 </Button>
                 <Modal isOpen={this.state.modal}
@@ -87,8 +87,8 @@ class SkillEdit extends Component {
                         </form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={this.updateSkill}>Save</Button>{' '}
-                        <Button onClick={this.toggle}>Cancel</Button>
+                        <Button onClick={this.updateSkill} color="success">Save</Button>{' '}
+                        <Button onClick={this.toggle} color="success">Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </>

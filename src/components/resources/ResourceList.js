@@ -4,6 +4,7 @@ import ResourceModal from './ResourceModal';
 import ResourceCard from './ResourceCard';
 import SkillDataManager from '../skills/SkillDataManager';
 import { Progress } from 'reactstrap';
+import './Resources.css';
 
 class ResourceList extends Component {
     state = {
@@ -93,22 +94,26 @@ class ResourceList extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>{this.state.skill.name}</h1>
-                <div className="progress-bar-container">Progress Bar
-                    <div className="text-center">{this.calcProgress()}%</div>
-                    <Progress value={`${this.calcProgress()}`} />
-                </div>
-                <ResourceModal {...this.props} addResource={this.addResource} />
-                <div className="resource-card-container">
-                    {this.state.resources.map(resource =>
-                        <ResourceCard
-                            key={resource.id}
-                            resource={resource}
-                            deleteResource={this.deleteResource}
-                            editResource={this.editResource}
-                            {...this.props}
-                        />
-                    )}
+                <div className="ResourceList-container">
+                    <h1 className="ResourceList-heading">{this.state.skill.name}</h1>
+                    <div className="progress-bar-container">
+                        <div className="text-center">You're {this.calcProgress()}% of the way towards completing this skill!</div>
+                        <Progress value={`${this.calcProgress()}`} color="success" />
+                    </div>
+                    <div className="ResourceModal-container">
+                        <ResourceModal {...this.props} addResource={this.addResource} />
+                    </div>
+                    <div className="resource-card-container">
+                        {this.state.resources.map(resource =>
+                            <ResourceCard
+                                key={resource.id}
+                                resource={resource}
+                                deleteResource={this.deleteResource}
+                                editResource={this.editResource}
+                                {...this.props}
+                            />
+                        )}
+                    </div>
                 </div>
             </React.Fragment>
         )

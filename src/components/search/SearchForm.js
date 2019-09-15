@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SearchDataManager from './SearchDataManager';
 import { Button } from 'reactstrap';
 import ResultCard from './ResultCard';
+import './Search.css';
 
 class SearchForm extends Component {
     state = {
@@ -26,28 +27,29 @@ class SearchForm extends Component {
     }
 
     render() {
-        console.log("searchForm", this.state)
         return (
             <React.Fragment>
-                <div className="searchContainer">
-                    <label>Search for Items</label>
-                    <input
-                        className="searchInput"
-                        type="text"
-                        id="searchInput"
-                        value={this.state.searchInput}
-                        onChange={this.handleFieldChange}
-                    />
-                    <Button onClick={this.executeSearch}>Search</Button>
-                </div>
-                <div className="resultContainer">
-                        {this.state.results.map(result =>
-                            <ResultCard
-                                key={result.id}
-                                result={result}
-                                {...this.props}
-                            />
-                        )}
+                <div className="SearchForm-container">
+                    <div className="SearchForm-input-container">
+                        <label>Search for Items</label>
+                        <input
+                            className="searchInput"
+                            type="text"
+                            id="searchInput"
+                            value={this.state.searchInput}
+                            onChange={this.handleFieldChange}
+                        />
+                        <Button onClick={this.executeSearch} color="success">Search</Button>
+                    </div>
+                    <div className="resultContainer">
+                            {this.state.results.map(result =>
+                                <ResultCard
+                                    key={result.id}
+                                    result={result}
+                                    {...this.props}
+                                />
+                            )}
+                    </div>
                 </div>
             </React.Fragment>
             

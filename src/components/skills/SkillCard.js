@@ -18,7 +18,9 @@ class SkillCard extends Component {
                     <h3>{this.props.skill.name}</h3>
                     <p>Description: {this.props.skill.description}</p>
                     <p>Status: {this.checkComplete() ? "Complete" : "Incomplete" } </p>
-                    <Link to={`/skills/${this.props.skill.id}`}><Button>View Resources</Button></Link>{' '}
+                    <Link to={`/skills/${this.props.skill.id}`}>
+                        <Button color="success">View Resources</Button>
+                    </Link>{' '}
                     <SkillEdit {...this.props} editSkill={this.props.editSkill} />{' '}
                     <SkillDelete {...this.props} deleteSkill={this.props.deleteSkill} />
                 </div>

@@ -21,7 +21,7 @@ class ResultView extends Component {
     render() {
         return (
             <>
-                <Button onClick={this.toggle}>
+                <Button onClick={this.toggle} color="success">
                     View Resources
                 </Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
@@ -36,7 +36,7 @@ class ResultView extends Component {
                         )}
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={this.toggle}>Okay</Button>
+                        <Button onClick={this.toggle} color="success">Okay</Button>
                     </ModalFooter>
                 </Modal>
             </>

@@ -39,14 +39,14 @@ class SkillDelete extends Component {
     render() {
         return (
             <>
-                <Button onClick={this.toggle}>Delete</Button>
+                <Button onClick={this.toggle} color="success">Delete</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalBody>
                         <p>Are you sure you want to delete this skill? Deleting this skill will also delete all of its associated resources.</p>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={this.handleDelete}>I'm Sure</Button>
-                        <Button onClick={this.toggle}>Cancel</Button>
+                        <Button onClick={this.handleDelete} color="success">I'm Sure</Button>
+                        <Button onClick={this.toggle} color="success">Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </>
