@@ -56,8 +56,8 @@ class SkillModal extends Component {
     render() {
         return (
             <>
-                <Button onClick={this.toggle}>
-                    Add a Skill
+                <Button onClick={this.toggle} color="success" size="lg" block>
+                    Add a New Skill
                 </Button>
                 <Modal  isOpen={this.state.modal} 
                         toggle={this.toggle}
@@ -88,8 +88,8 @@ class SkillModal extends Component {
                         </form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={this.constructNewSkill}>Add Skill</Button>{' '}
-                        <Button onClick={this.toggle}>Cancel</Button>
+                        <Button onClick={this.constructNewSkill} color="success">Add Skill</Button>{' '}
+                        <Button onClick={this.toggle} color="success">Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </>

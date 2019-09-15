@@ -4,6 +4,7 @@ import ResourceDelete from './ResourceDelete';
 import ResourceEdit from './ResourceEdit';
 import TypeDataManager from './TypeDataManager';
 import ResourceDataManager from './ResourceDataManager';
+import './Resources.css';
 
 class ResourceCard extends Component {
     state = {

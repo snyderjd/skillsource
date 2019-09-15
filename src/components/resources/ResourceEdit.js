@@ -80,7 +80,7 @@ class ResourceEdit extends Component {
     render() {
         return (
             <>
-                <Button onClick={this.toggle}>
+                <Button onClick={this.toggle} color="success">
                     Edit
                 </Button>
                 <Modal isOpen={this.state.modal}
@@ -141,8 +141,8 @@ class ResourceEdit extends Component {
                         </form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={this.updateResource}>Save</Button>{' '}
-                        <Button onClick={this.toggle}>Cancel</Button>
+                        <Button onClick={this.updateResource} color="success">Save</Button>{' '}
+                        <Button onClick={this.toggle} color="success">Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </>

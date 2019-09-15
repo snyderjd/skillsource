@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SkillModal from './SkillModal';
 import SkillDataManager from './SkillDataManager';
 import SkillCard from './SkillCard';
+import './Skills.css';
 
 class SkillList extends Component {
     state = {
@@ -43,12 +44,15 @@ class SkillList extends Component {
     render() {
         return (
             <React.Fragment>
-                <SkillModal 
-                    {...this.props}
-                    addSkill={this.addSkill}
-                />
-                <div className="skills-container">
-                    <div className="skill-card">
+                <div className="SkillList-container">
+                    <h1 className="SkillList-heading">Your Skills</h1>
+                    <div className="SkillModal-container">
+                        <SkillModal 
+                            {...this.props}
+                            addSkill={this.addSkill}
+                        />
+                    </div>
+                    <div className="skills-container">
                         {this.state.skills.map(skill => 
                             <SkillCard 
                                 key={skill.id}

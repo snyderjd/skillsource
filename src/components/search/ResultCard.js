@@ -3,6 +3,7 @@ import SkillDataManager from '../skills/SkillDataManager';
 import ResourceDataManager from '../resources/ResourceDataManager';
 import ResultView from './ResultView';
 import CopySkill from './CopySkill';
+import './Search.css';
 
 class ResultCard extends Component {
     state = {

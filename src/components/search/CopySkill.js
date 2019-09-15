@@ -72,7 +72,7 @@ class CopySkill extends Component {
     render() {
             return (
                 <>
-                <Button onClick={this.toggle}>
+                <Button onClick={this.toggle} color="success">
                         Add Skill
                 </Button>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
@@ -81,8 +81,8 @@ class CopySkill extends Component {
                             Are you sure you want to copy this skill and all of its associated resources?
                     </ModalBody>
                         <ModalFooter>
-                            <Button onClick={this.handleSubmit}>Yes</Button>
-                            <Button onClick={this.toggle}>No</Button>
+                            <Button onClick={this.handleSubmit} color="success">Yes</Button>
+                            <Button onClick={this.toggle} color="success">No</Button>
                         </ModalFooter>
                     </Modal>
                 </>

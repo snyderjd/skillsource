@@ -67,7 +67,7 @@ class ResourceModal extends Component {
     render() {
         return(
             <>
-                <Button onClick={this.toggle}>
+                <Button onClick={this.toggle} color="success" size="lg" block>
                     Add a Resource
                 </Button>
                 <Modal isOpen={this.state.modal}
@@ -128,8 +128,8 @@ class ResourceModal extends Component {
                     </form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button onClick={this.buildNewResource}>Add Resource</Button>{' '}
-                    <Button onClick={this.toggle}>Cancel</Button>
+                    <Button onClick={this.buildNewResource} color="success">Add Resource</Button>{' '}
+                    <Button onClick={this.toggle} color="success">Cancel</Button>
                 </ModalFooter>
                 </Modal>
             </>

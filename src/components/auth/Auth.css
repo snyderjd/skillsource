@@ -1,0 +1,30 @@
+/* Styling for Auth components */
+
+.Auth-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+
+.Login-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.Login-inputs {
+    width: 400px;
+}
+
+.Login-inputs-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.Login-input {
+    width: 300px;   
+}

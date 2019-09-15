@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import Login from './Login';
 import Register from './Register';
+import './Auth.css';
 
 class Auth extends Component {
 
     render() {
         return (
             <React.Fragment>
-                <Login {...this.props} />
-                <Register {...this.props} />
+                <div className="Auth-container">
+                    <Login {...this.props} />
+                </div>
             </React.Fragment>
         )
     }
