@@ -34,9 +34,11 @@ class Register extends Component {
                 skillsComplete: 0
             };
 
-            UserDataManager.postUser(newUserObject)
-                .then(newUser => sessionStorage.setItem("activeUserId", newUser.id))
-                .then(() => this.props.history.push("/skills"));
+            UserDataManager.postUser(newUserObject).then(() => {
+                this.props.history.push("/");
+            }).then(this.toggle).then(() => {
+                window.alert("Registration successful! Please Log In!")
+            });
         }
 
     }
@@ -67,46 +69,56 @@ class Register extends Component {
             <div>
                 <Button onClick={this.toggle} color="success" >Register</Button>
                  <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                     <ModalHeader toggle={this.toggle}>Sign up</ModalHeader>
+                     <ModalHeader toggle={this.toggle}>Register New Account</ModalHeader>
                      <ModalBody>
                          <form>
-                             <fieldset>
-                                 <div>
-                                     <label htmlFor="email">Email Address</label>
-                                     <input onChange={this.handleFieldChange} type="email"
+                            <div className="Login-inputs">
+                                <div className="Login-inputs-group">
+                                    <label htmlFor="email">Email Address</label>
+                                    <input onChange={this.handleFieldChange} type="email"
                                         id="email"
                                         value={this.state.email}
                                         placeholder="Email address"
                                         required
                                         autoFocus=""
-                                    /><br />
+                                        className="Login-input"
+                                    />
+                                </div>
+                                <div className="Login-inputs-group">
                                     <label htmlFor="username">Username</label>
                                     <input onChange={this.handleFieldChange} type="text"
                                         id="username"
                                         value={this.state.username}
                                         placeholder="Username"
                                         required
-                                    /><br />
+                                        className="Login-input"
+                                    />
+                                </div>
+                                <div className="Login-inputs-group">
                                     <label htmlFor="password">Password</label>
                                     <input onChange={this.handleFieldChange} type="password"
                                         id="password"
                                         value={this.state.password}
                                         placeholder="Password"
                                         required
-                                    /><br />
+                                        className="Login-input"
+                                    />
+                                </div>
+                                <div className="Login-inputs-group">
                                     <label htmlFor="confirmPassword">Confirm Password</label>
                                     <input onChange={this.handleFieldChange} type="password"
                                         id="confirmPassword"
                                         value={this.state.confirmPassword}
                                         placeholder="Confirm Password"
                                         required
+                                        className="Login-input"
                                     />
                                 </div>
-                            </fieldset>
+                            </div>
                         </form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={this.handleRegister} color="success">Sign Up</Button>{' '}
+                        <Button onClick={this.handleRegister} color="success">Register</Button>{' '}
                         <Button onClick={this.toggle} color="success">Cancel</Button>
                     </ModalFooter>
                 </Modal>

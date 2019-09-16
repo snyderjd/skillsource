@@ -20,11 +20,16 @@
     margin: 20px;
 }
 
+.SkillCard-heading {
+    font-family: 'PT Serif', serif;
+}
+
 .SkillList-heading {
     margin: auto;
     width: 20%;
     text-align: center;
     color: #20720D;
+    font-family: 'PT Serif', serif;
 }
 
 .SkillModal-container {
