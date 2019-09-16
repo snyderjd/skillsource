@@ -46,38 +46,38 @@ class Login extends Component {
             <React.Fragment>
                 <div className="Login-container">
                     <form onSubmit={this.handleLogin} className="Login-form">
-                        <fieldset>
-                            <h3>Please Log In</h3>
-                            <div className="Login-inputs">
-                                <div className="Login-inputs-group">
-                                    <label className="Login-label" htmlFor="email">Email</label>
-                                    <input
-                                        className="Login-input"
-                                        onChange={this.handleFieldChange}
-                                        id="email"
-                                        type="email"
-                                        value={this.state.email}
-                                        placeholder="Email address"
-                                        required
-                                        autoFocus=""
-                                    />
-                                </div>
-                                <div className="Login-inputs-group">
-                                    <label className="Login-label" htmlFor="password">Password</label>
-                                    <input
-                                        className="Login-input"
-                                        onChange={this.handleFieldChange}
-                                        id="password"
-                                        value={this.state.password}
-                                        type="password"
-                                        placeholder="Password"
-                                        required 
-                                    />
-                                </div>
+                        <h3 className="Login-heading">Please Log In Or Register</h3>
+                        <div className="Login-inputs">
+                            <div className="Login-inputs-group">
+                                <label className="Login-label" htmlFor="email">Email</label>
+                                <input
+                                    className="Login-input"
+                                    onChange={this.handleFieldChange}
+                                    id="email"
+                                    type="email"
+                                    value={this.state.email}
+                                    placeholder="Email address"
+                                    required
+                                    autoFocus=""
+                                />
                             </div>
+                            <div className="Login-inputs-group">
+                                <label className="Login-label" htmlFor="password">Password</label>
+                                <input
+                                    className="Login-input"
+                                    onChange={this.handleFieldChange}
+                                    id="password"
+                                    value={this.state.password}
+                                    type="password"
+                                    placeholder="Password"
+                                    required 
+                                />
+                            </div>
+                        </div>
+                        <div className="Login-buttons">
                             <Button color="success" type="submit">Sign In</Button>{' '}
-                            <Register {...this.props} />                            
-                        </fieldset>
+                            <Register {...this.props} />
+                        </div>                            
                     </form>
                 </div>
             </React.Fragment>
