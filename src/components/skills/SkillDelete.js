@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, ModalHeader, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import ResourceDataManager from '../resources/ResourceDataManager';
 
 class SkillDelete extends Component {
@@ -41,6 +41,7 @@ class SkillDelete extends Component {
             <>
                 <Button onClick={this.toggle} color="success">Delete</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <ModalHeader toggle={this.toggle}>Delete Skill</ModalHeader>
                     <ModalBody>
                         <p>Are you sure you want to delete this skill? Deleting this skill will also delete all of its associated resources.</p>
                     </ModalBody>

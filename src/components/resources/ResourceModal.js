@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import TypeDataManager from './TypeDataManager';
+import './Resources.css';
 
 class ResourceModal extends Component {
     constructor(props) {
@@ -77,8 +78,8 @@ class ResourceModal extends Component {
                 <ModalHeader toggle={this.toggle}>New Resource</ModalHeader>
                 <ModalBody>
                     <form>
-                        <fieldset>
-                            <div className="newResourceForm">
+                        <div className="ResourceModal-inputs">
+                            <div className="ResourceModal-input-pair">
                                 <label htmlFor="title">Title</label>
                                 <input onChange={this.handleFieldChange}
                                     type="text"
@@ -87,7 +88,10 @@ class ResourceModal extends Component {
                                     placeholder="Title of Resource"
                                     required
                                     autoFocus=""
-                                /><br />
+                                    className="ResourceModal-input"
+                                />
+                            </div>
+                            <div className="ResourceModal-input-pair">
                                 <label htmlFor="url">URL</label>
                                 <input onChange={this.handleFieldChange}
                                     type="text"
@@ -95,7 +99,10 @@ class ResourceModal extends Component {
                                     value={this.state.url}
                                     placeholder="Resource URL"
                                     required
-                                /><br />
+                                    className="ResourceModal-input"
+                                />
+                            </div>
+                            <div className="ResourceModal-input-pair">
                                 <label htmlFor="summary">Summary</label>
                                 <input onChange={this.handleFieldChange}
                                     type="text"
@@ -103,11 +110,15 @@ class ResourceModal extends Component {
                                     value={this.state.summary}
                                     placeholder="Summary of Resource"
                                     required
-                                /><br />
+                                    className="ResourceModal-input"
+                                />
+                            </div>
+                            <div className="ResourceModal-input-pair">
                                 <label htmlFor="type">Type</label>
                                 <select
                                     id="typeId"
                                     value={this.state.typeId}
+                                    className="ResourceModal-input"
                                     onChange={this.handleFieldChange}
                                 >
                                     {this.state.types.map(type =>
@@ -115,16 +126,19 @@ class ResourceModal extends Component {
                                             {type.typeName}
                                         </option>
                                     )}
-                                </select><br />
+                                </select>
+                            </div>
+                            <div className="ResourceModal-input-pair">
                                 <label htmlFor="otherType">Other</label>
                                 <input onChange={this.handleFieldChange}
                                     type="text"
                                     id="otherType"
                                     value={this.state.otherType}
                                     placeholder="If other, please specify"
+                                    className="ResourceModal-input"
                                 />
                             </div>
-                        </fieldset>
+                        </div>
                     </form>
                 </ModalBody>
                 <ModalFooter>

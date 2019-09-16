@@ -49,14 +49,7 @@ class ResourceEdit extends Component {
                 isComplete: this.state.isComplete
             }
 
-            this.props.editResource(updatedResource).then(this.toggle).then(this.setState({
-                typeId: 0,
-                otherType: "",
-                title: "",
-                summary: "",
-                url: "",
-                content: ""
-            }));
+            this.props.editResource(updatedResource).then(this.toggle);
         }
     }
 
@@ -90,8 +83,8 @@ class ResourceEdit extends Component {
                     <ModalHeader toggle={this.toggle}>Edit Resource</ModalHeader>
                     <ModalBody>
                         <form>
-                            <fieldset>
-                                <div className="newResourceForm">
+                            <div className="ResourceEdit-inputs">
+                                <div className="ResourceModal-input-pair">
                                     <label htmlFor="title">Title</label>
                                     <input onChange={this.handleFieldChange}
                                         type="text"
@@ -100,7 +93,10 @@ class ResourceEdit extends Component {
                                         placeholder="Title of Resource"
                                         required
                                         autoFocus=""
-                                    /><br />
+                                        className="ResourceModal-input"
+                                    />
+                                </div>
+                                <div className="ResourceModal-input-pair">
                                     <label htmlFor="url">URL</label>
                                     <input onChange={this.handleFieldChange}
                                         type="text"
@@ -108,7 +104,10 @@ class ResourceEdit extends Component {
                                         value={this.state.url}
                                         placeholder="Resource URL"
                                         required
-                                    /><br />
+                                        className="ResourceModal-input"
+                                    />
+                                </div>
+                                <div className="ResourceModal-input-pair">
                                     <label htmlFor="summary">Summary</label>
                                     <input onChange={this.handleFieldChange}
                                         type="text"
@@ -116,28 +115,35 @@ class ResourceEdit extends Component {
                                         value={this.state.summary}
                                         placeholder="Summary of Resource"
                                         required
-                                    /><br />
+                                        className="ResourceModal-input"
+                                    />
+                                </div>
+                                <div className="ResourceModal-input-pair">
                                     <label htmlFor="type">Type</label>
                                     <select
                                         id="typeId"
                                         value={this.state.typeId}
                                         onChange={this.handleFieldChange}
+                                        className="ResourceModal-input"
                                     >
                                         {this.state.types.map(type =>
                                             <option key={type.id} value={type.id}>
                                                 {type.typeName}
                                             </option>
                                         )}
-                                    </select><br />
+                                    </select>
+                                </div>
+                                <div className="ResourceModal-input-pair">
                                     <label htmlFor="otherType">Other</label>
                                     <input onChange={this.handleFieldChange}
                                         type="text"
                                         id="otherType"
                                         value={this.state.otherType}
                                         placeholder="If other, please specify"
+                                        className="ResourceModal-input"
                                     />
                                 </div>
-                            </fieldset>
+                            </div>
                         </form>
                     </ModalBody>
                     <ModalFooter>
