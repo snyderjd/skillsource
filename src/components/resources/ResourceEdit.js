@@ -49,14 +49,7 @@ class ResourceEdit extends Component {
                 isComplete: this.state.isComplete
             }
 
-            this.props.editResource(updatedResource).then(this.toggle).then(this.setState({
-                typeId: 0,
-                otherType: "",
-                title: "",
-                summary: "",
-                url: "",
-                content: ""
-            }));
+            this.props.editResource(updatedResource).then(this.toggle);
         }
     }
 
