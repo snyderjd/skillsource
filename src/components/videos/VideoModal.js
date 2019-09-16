@@ -14,6 +14,7 @@ class VideoModal extends Component {
             content: "",
             types: [],
             skills: [],
+            skillId: 0,
             activeUserId: parseInt(sessionStorage.getItem("activeUserId"))
         }
 
@@ -32,6 +33,15 @@ class VideoModal extends Component {
 
     buildNewResource = (event) => {
         event.preventDefault();
+        // build new resource object with the video's properties and user's skill selection and save to the database
+        const newResource = {
+            skillId: parseInt(this.state.skillId),
+            typeId: parseInt(this.state.typeId),
+            otherType: '',
+            title: this.props.video.snippet.title,
+            summary: this.props.video.snippet.description,
+              
+        }
 
     }
 
@@ -87,8 +97,8 @@ class VideoModal extends Component {
                                 <div className="VideoModal-input-pair">
                                     <label htmlFor="type">Please select which skill you would like to add this video to:</label>
                                     <select
-                                        id="typeId"
-                                        value={this.state.typeId}
+                                        id="skillId"
+                                        value={this.state.skill}
                                         className="VideoModal-input"
                                         onChange={this.handleFieldChange}
                                     >
