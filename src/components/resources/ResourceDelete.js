@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class ResourceDelete extends Component {
     constructor(props) {
@@ -26,6 +26,7 @@ class ResourceDelete extends Component {
             <>
                 <Button onClick={this.toggle} color="success">Delete</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <ModalHeader toggle={this.toggle}>Delete Resource</ModalHeader>
                     <ModalBody>
                         <p>Are you sure you want to delete this resource?</p>
                     </ModalBody>

@@ -31,3 +31,13 @@
     text-align: center;
     color: #20720D;
 }
+
+.ResourceModal-input-pair {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.ResourceModal-input {
+    width: 70%;
+}

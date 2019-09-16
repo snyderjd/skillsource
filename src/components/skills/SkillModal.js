@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import './Skills.css';
 
 class SkillModal extends Component {
     constructor(props) {
@@ -66,25 +67,28 @@ class SkillModal extends Component {
                     <ModalHeader toggle={this.toggle}>New Skill</ModalHeader>
                     <ModalBody>
                         <form>
-                            <fieldset>
-                                <div className="newSkillForm">
-                                    <label htmlFor="name">Skill Name</label>
-                                    <input onChange={this.handleFieldChange} type="text"
-                                        id="name"
-                                        value={this.state.name}
-                                        placeholder="Skill Name"
-                                        required
-                                        autoFocus=""
-                                    /><br />
-                                    <label htmlFor="description">Description</label>
-                                    <input onChange={this.handleFieldChange} type="text"
-                                        id="description"
-                                        value={this.state.description}
-                                        placeholder="Description"
-                                    
-                                    />
+                                <div className="SkillModal-inputs">
+                                    <div className="input-pair">
+                                        <label htmlFor="name">Skill Name</label>
+                                        <input onChange={this.handleFieldChange} type="text"
+                                            id="name"
+                                            value={this.state.name}
+                                            placeholder="Skill Name"
+                                            required
+                                            autoFocus=""
+                                            className="SkillModal-name"
+                                        />
+                                    </div>
+                                    <div className="input-pair">
+                                        <label htmlFor="description">Description</label>
+                                        <input onChange={this.handleFieldChange} type="text"
+                                            id="description"
+                                            value={this.state.description}
+                                            placeholder="Description"
+                                            className="SkillModal-description"
+                                        />
+                                    </div>
                                 </div>
-                            </fieldset>
                         </form>
                     </ModalBody>
                     <ModalFooter>

@@ -32,3 +32,22 @@
     margin: auto;
     margin-top: 20px;
 }
+
+.input-pair {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.SkillModal-inputs {
+    width: 100%;
+}
+
+.SkillEdit-inputs {
+    width: 100%;
+}
+
+.SkillModal-name, .SkillModal-description {
+    width: 70%;
+}
+

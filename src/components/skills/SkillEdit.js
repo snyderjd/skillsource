@@ -66,8 +66,8 @@ class SkillEdit extends Component {
                     <ModalHeader toggle={this.toggle}>Edit Skill</ModalHeader>
                     <ModalBody>
                         <form>
-                            <fieldset>
-                                <div className="newSkillForm">
+                            <div className="SkillEdit-inputs">
+                                <div className="input-pair">
                                     <label htmlFor="name">Skill Name</label>
                                     <input onChange={this.handleFieldChange} type="text"
                                         id="name"
@@ -75,15 +75,19 @@ class SkillEdit extends Component {
                                         placeholder="Skill Name"
                                         required
                                         autoFocus=""
-                                    /><br />
+                                        className="SkillModal-name"
+                                    />
+                                </div>
+                                <div className="input-pair">
                                     <label htmlFor="description">Description</label>
                                     <input onChange={this.handleFieldChange} type="text"
                                         id="description"
                                         value={this.state.description}
                                         placeholder="Description"
+                                        className="SkillModal-description"
                                     />
                                 </div>
-                            </fieldset>
+                            </div>
                         </form>
                     </ModalBody>
                     <ModalFooter>
