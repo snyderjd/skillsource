@@ -4,6 +4,7 @@ import Auth from './auth/Auth';
 import SkillList from './skills/SkillList';
 import ResourceList from './resources/ResourceList';
 import Search from './search/Search';
+import VideoSearch from './videos/VideoSearch';
 
 class ApplicationViews extends Component {
     state = {
@@ -41,6 +42,13 @@ class ApplicationViews extends Component {
                 <Route exact path="/search" render={props => {
                     if (this.isAuthenticated()) {
                         return <Search {...props} />
+                    }
+                    return <Auth {...props} />
+                }} />
+
+                <Route exact path="/video" render={props => {
+                    if (this.isAuthenticated()) {
+                        return <VideoSearch {...props} />
                     }
                     return <Auth {...props} />
                 }} />
