@@ -1,3 +1,11 @@
+/* Styling for SkillSource */
+
+/* Google Fonts
+font-family: 'PT Serif', serif;
+font-family: 'Roboto', sans-serif; */
+
 body {
     padding-top: 80px;
+    font-family: 'Roboto', sans-serif;
 }
+

@@ -29,3 +29,12 @@ Hex: #FDE100
 .nav-link:hover {
     color: #FDE100;
 }
+
+.NavBar-username {
+    text-align: center;
+    font-family: 'PT Serif', serif;
+}
+
+.NavBar-heading {
+    font-family: 'PT Serif', serif;
+}

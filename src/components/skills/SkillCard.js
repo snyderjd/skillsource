@@ -15,7 +15,7 @@ class SkillCard extends Component {
         return (
             <React.Fragment>
                 <div className="skill-card">
-                    <h3>{this.props.skill.name}</h3>
+                    <h3 className="SkillCard-heading">{this.props.skill.name}</h3>
                     <p>Description: {this.props.skill.description}</p>
                     <p>Status: {this.checkComplete() ? "Complete" : "Incomplete" } </p>
                     <Link to={`/skills/${this.props.skill.id}`}>

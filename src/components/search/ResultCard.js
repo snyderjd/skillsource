@@ -39,7 +39,7 @@ class ResultCard extends Component {
         return (
             <React.Fragment>
                 <div className="result-card">
-                    <h3>{this.props.result.name}</h3>
+                    <h3 className="ResultCard-heading">{this.props.result.name}</h3>
                     <p>Description: {this.props.result.description} </p>
                     <p>Times Copied: {this.props.result.timesCopied}</p>
                     <ResultView {...this.props} resources={this.state.resources} />{' '}

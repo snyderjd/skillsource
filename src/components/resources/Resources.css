@@ -20,6 +20,10 @@
     margin-bottom: 20px;
 }
 
+.ResourceCard-heading {
+    font-family: 'PT Serif', serif;
+}
+
 .ResourceModal-container {
     width: 80%;
     margin: auto;
@@ -30,6 +34,7 @@
     margin: auto;
     text-align: center;
     color: #20720D;
+    font-family: 'PT Serif', serif;
 }
 
 .ResourceModal-input-pair {
