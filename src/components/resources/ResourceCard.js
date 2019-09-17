@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import ResourceDelete from './ResourceDelete';
 import ResourceEdit from './ResourceEdit';
 import TypeDataManager from './TypeDataManager';

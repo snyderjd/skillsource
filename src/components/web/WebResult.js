@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import WebModal from './WebModal';
-import { Link } from 'react-router-dom';
 
 class WebResult extends Component {
 
@@ -10,7 +9,8 @@ class WebResult extends Component {
                 <div className="WebResult-card result-card">
                     <h3 className="ResultCard-heading">{this.props.result.title}</h3>
                     <p>{this.props.result.snippet}</p>
-                    <a target="_blank" href={this.props.result.link}>Go To Resource</a><br/>
+                    <a target="_blank" rel="noopener noreferrer"
+                        href={this.props.result.link}>Go To Resource</a><br/>
                     <WebModal 
                         key={this.props.result.cacheId}
                         result={this.props.result}

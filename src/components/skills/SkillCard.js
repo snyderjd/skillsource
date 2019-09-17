@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 class SkillCard extends Component {
     // Check to see if all the resources for a given skill are marked as complete
     checkComplete = () => {
+        if (this.props.skill.resources.length === 0) {
+            return false
+        }
         return this.props.skill.resources.every(resource => resource.isComplete)
     }
 

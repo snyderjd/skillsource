@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import VideoModal from './VideoModal';
-import { Link } from 'react-router-dom';
 
 class VideoResult extends Component {
 
@@ -11,7 +10,8 @@ class VideoResult extends Component {
                     <h3 className="ResultCard-heading">{this.props.video.snippet.title}</h3>
                     <p>{this.props.video.snippet.description}</p>
                     <p>Date: {this.props.video.snippet.publishedAt.split("T")[0]}</p>
-                    <a target="_blank" href={`www.youtube.com/watch/${this.props.video.id.videoId}`}>Watch Video</a><br/>
+                    <a  target="_blank" rel="noopener noreferrer" 
+                        href={`www.youtube.com/watch/${this.props.video.id.videoId}`}>Watch Video</a><br/>
                     <img src={this.props.video.snippet.thumbnails.default.url} alt="Video thumbnail"></img><br />
                     <VideoModal {...this.props} />
                 </div>
