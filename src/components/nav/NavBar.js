@@ -22,11 +22,14 @@ class NavBar extends Component {
                     <li className="nav-item">
                         <Link to="/skills" className="nav-link">Skills</Link>
                     </li>
-                    <li className="nav-item dropdown">
+                    <li className="nav-item">
                         <Link   to="/search" className="nav-link">Search</Link>
                     </li>
-                    <li className="nav-item dropdown">
+                    <li className="nav-item">
                         <Link to="/video" className="nav-link">Videos</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/web" className="nav-link">Web</Link>
                     </li>
                     <li className="nav-item">
                         <Link onClick={this.props.logout} to="/" className="nav-link">Logout</Link>

@@ -5,6 +5,7 @@ import SkillList from './skills/SkillList';
 import ResourceList from './resources/ResourceList';
 import Search from './search/Search';
 import VideoSearch from './videos/VideoSearch';
+import WebSearch from './web/WebSearch';
 
 class ApplicationViews extends Component {
     state = {
@@ -49,6 +50,13 @@ class ApplicationViews extends Component {
                 <Route exact path="/video" render={props => {
                     if (this.isAuthenticated()) {
                         return <VideoSearch {...props} />
+                    }
+                    return <Auth {...props} />
+                }} />
+
+                <Route exact path="/web" render={props => {
+                    if (this.isAuthenticated()) {
+                        return <WebSearch {...props} />
                     }
                     return <Auth {...props} />
                 }} />
