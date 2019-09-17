@@ -49,41 +49,11 @@ class VideoModal extends Component {
         ResourceDataManager.saveResource(newResource).then(this.toggle);
     }
 
-//     buildNewResource = (event) => {
-//         // build new resource object with inputs from the form fields and save to the database
-//         event.preventDefault();
-//         if (this.state.title === "" || this.state.summary === "" || this.state.url === "") {
-//             alert("Please ensure all fields are filled out.");
-//         } else {
-//             const newResource = {
-//                 skillId: this.props.skillId,
-//                 typeId: parseInt(this.state.typeId),
-//                 otherType: this.state.otherType,
-//                 title: this.state.title,
-//                 summary: this.state.summary,
-//                 url: this.state.url,
-//                 content: this.state.content,
-//                 isComplete: false
-//             }
-
-//             this.props.addResource(newResource).then(this.toggle).then(this.setState({
-//                 typeId: 1,
-//                 otherType: "",
-//                 title: "",
-//                 summary: "",
-//                 url: "",
-//                 content: ""
-//             }));
-//         }
-//     }
-
     componentDidMount() {
         SkillDataManager.getSkills(this.state.activeUserId).then(skills => {
             this.setState({ skills: skills })
         })
     }
-
-
 
     render() {
         return (
@@ -99,7 +69,6 @@ class VideoModal extends Component {
                     <ModalBody>
                         <form>
                             <div className="VideoModal-inputs">
-
                                 <div className="VideoModal-input-pair">
                                     <label htmlFor="type">Please select which skill you would like to add this video to:</label>
                                     <select
@@ -136,23 +105,3 @@ class VideoModal extends Component {
 }
 
 export default VideoModal;
-
-
-// import React, { Component } from 'react';
-// import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-// import TypeDataManager from './TypeDataManager';
-// import './Resources.css';
-
-// class ResourceModal extends Component {
-
-
-
-//     render() {
-//         return (
-//             
-//         )
-//     }
-
-// }
-
-// export default ResourceModal;
