@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import SkillDataManager from '../skills/SkillDataManager';
+import ResourceDataManager from '../resources/ResourceDataManager';
 
 class VideoModal extends Component {
     constructor(props) {
@@ -40,9 +41,12 @@ class VideoModal extends Component {
             otherType: '',
             title: this.props.video.snippet.title,
             summary: this.props.video.snippet.description,
-              
+            url: `https://www.youtube.com/embed/${this.props.video.id.videoId}`,
+            content: this.state.content,
+            isComplete: false
         }
 
+        ResourceDataManager.saveResource(newResource).then(this.toggle);
     }
 
 //     buildNewResource = (event) => {
@@ -79,6 +83,8 @@ class VideoModal extends Component {
         })
     }
 
+
+
     render() {
         return (
             <>
@@ -98,10 +104,11 @@ class VideoModal extends Component {
                                     <label htmlFor="type">Please select which skill you would like to add this video to:</label>
                                     <select
                                         id="skillId"
-                                        value={this.state.skill}
+                                        value={this.state.skillId}
                                         className="VideoModal-input"
                                         onChange={this.handleFieldChange}
                                     >
+                                        <option>Select Skill</option>
                                         {this.state.skills.map(skill =>
                                             <option key={skill.id} value={skill.id}>
                                                 {skill.name}
