@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 class SkillCard extends Component {
     // Check to see if all the resources for a given skill are marked as complete
     checkComplete = () => {
+        if (this.props.skill.resources.length === 0) {
+            return false
+        }
         return this.props.skill.resources.every(resource => resource.isComplete)
     }
 
@@ -19,7 +22,7 @@ class SkillCard extends Component {
                     <p>Description: {this.props.skill.description}</p>
                     <p>Status: {this.checkComplete() ? "Complete" : "Incomplete" } </p>
                     <Link to={`/skills/${this.props.skill.id}`}>
-                        <Button color="success">View Resources</Button>
+                        <Button color="success">View Skill</Button>
                     </Link>{' '}
                     <SkillEdit {...this.props} editSkill={this.props.editSkill} />{' '}
                     <SkillDelete {...this.props} deleteSkill={this.props.deleteSkill} />

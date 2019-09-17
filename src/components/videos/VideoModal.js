@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import SkillDataManager from '../skills/SkillDataManager';
 import ResourceDataManager from '../resources/ResourceDataManager';
+import './Video.css';
 
 class VideoModal extends Component {
     constructor(props) {
@@ -58,7 +59,7 @@ class VideoModal extends Component {
     render() {
         return (
             <>
-                <Button onClick={this.toggle} color="success">
+                <Button onClick={this.toggle} color="success" className="VideoModal-openButton">
                     Add to a Skill
                 </Button>
                 <Modal isOpen={this.state.modal}

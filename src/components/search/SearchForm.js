@@ -21,6 +21,7 @@ class SearchForm extends Component {
         event.preventDefault();
         SearchDataManager.searchSkills(this.state.searchInput).then(skills => {
             console.log(skills);
+            skills.sort((a, b) => b.timesCopied - a.timesCopied)
             this.setState({ results: skills })
         })
 

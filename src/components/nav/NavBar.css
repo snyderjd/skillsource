@@ -31,8 +31,8 @@ Hex: #FDE100
 }
 
 .NavBar-username {
-    text-align: center;
     font-family: 'PT Serif', serif;
+    margin-right: 10px;
 }
 
 .NavBar-heading {

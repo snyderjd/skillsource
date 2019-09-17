@@ -79,6 +79,9 @@ class ResourceList extends Component {
 
     calcProgress = () => {
         // Calculate percentage of skill's resources that are marked as 'complete'
+        if (this.state.resources.length === 0) {
+            return 0;
+        }
         let numComplete = 0
 
         this.state.resources.map(resource => {
