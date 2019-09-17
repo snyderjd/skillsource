@@ -65,7 +65,7 @@ class ResourceCard extends Component {
                     <h3 className="ResourceCard-heading">{this.props.resource.title}</h3>
                     <p>Type: {this.props.resource.type.typeName}</p>
                     <p>Summary: {this.props.resource.summary}</p> 
-                    <Link target="_blank" to={`//${this.props.resource.url}`}>Go To Resource</Link><br />
+                    <a target="_blank" href={this.props.resource.url}>Go To Resource</a><br />
                     <input onChange={this.markComplete}
                         type="checkbox"
                         id="isComplete"

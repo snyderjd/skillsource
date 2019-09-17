@@ -7,12 +7,10 @@ class WebResult extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="WebResult-card">
-                    <h3>{this.props.result.title}</h3>
+                <div className="WebResult-card result-card">
+                    <h3 className="ResultCard-heading">{this.props.result.title}</h3>
                     <p>{this.props.result.snippet}</p>
-                    <Link target="_blank" to="www.google.com">
-                        Go To Resource
-                    </Link>
+                    <a target="_blank" href={this.props.result.link}>Go To Resource</a><br/>
                     <WebModal 
                         key={this.props.result.cacheId}
                         result={this.props.result}

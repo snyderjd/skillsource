@@ -51,23 +51,6 @@ class WebModal extends Component {
         ResourceDataManager.saveResource(newResource).then(this.toggle);
     }
 
-    // buildNewResource = (event) => {
-    //     event.preventDefault();
-    //     // build new resource object with the video's properties and user's skill selection and save to the database
-    //     const newResource = {
-    //         skillId: parseInt(this.state.skillId),
-    //         typeId: parseInt(this.state.typeId),
-    //         otherType: '',
-    //         title: this.props.video.snippet.title,
-    //         summary: this.props.video.snippet.description,
-    //         url: `https://www.youtube.com/embed/${this.props.video.id.videoId}`,
-    //         content: this.state.content,
-    //         isComplete: false
-    //     }
-
-    //     ResourceDataManager.saveResource(newResource).then(this.toggle);
-    // }
-
     componentDidMount() {
         TypeDataManager.getTypes().then(types => {
             SkillDataManager.getSkills(this.state.activeUserId).then(skills => {
@@ -84,7 +67,7 @@ class WebModal extends Component {
     render() {
         return (
             <>
-                <Button onClick={this.toggle} color="success">
+                <Button onClick={this.toggle} color="success" className="WebModal-openButton">
                     Add to a Skill
                 </Button>
                 <Modal isOpen={this.state.modal}

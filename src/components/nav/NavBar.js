@@ -17,8 +17,10 @@ class NavBar extends Component {
         return (
             <nav className="navbar fixed-top navbar-expand d-flex justify-content-between">
                 <h2 className="NavBar-heading">SkillSource</h2>
-                <h3 className="NavBar-username">{this.props.username}</h3>
                 <ul className="navbar-nav d-flex justify-content-end">
+                    <li className="nav-item">
+                        <h3 className="NavBar-username">{this.props.username}</h3>
+                    </li>
                     <li className="nav-item">
                         <Link to="/skills" className="nav-link">Skills</Link>
                     </li>

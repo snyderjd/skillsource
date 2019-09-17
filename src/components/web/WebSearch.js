@@ -34,25 +34,27 @@ class WebSearch extends Component {
         return (
             <React.Fragment>
                 <div className="SearchForm-container">
-                    <label>Search the Web</label>
-                    <input 
-                        className="searchInput"
-                        type="text"
-                        id="webInput"
-                        value={this.state.videoInput}
-                        onChange={this.handleFieldChange}
-                    />
-                    <Button onClick={this.executeWebSearch} color="success">Search</Button>
-                </div>
-                <div className="resultContainer">
-                    {this.state.webResults.map(result =>
-                        <WebResult 
-                            key={result.cacheId}
-                            result={result}
-                            {...this.props}
+                    <div className="SearchForm-input-container">
+                        <label>Search the Web</label>
+                        <input 
+                            className="searchInput"
+                            type="text"
+                            id="webInput"
+                            value={this.state.videoInput}
+                            onChange={this.handleFieldChange}
                         />
-                    )}
+                        <Button onClick={this.executeWebSearch} color="success">Search</Button>
+                    </div>
+                    <div className="resultContainer">
+                        {this.state.webResults.map(result =>
+                            <WebResult 
+                                key={result.cacheId}
+                                result={result}
+                                {...this.props}
+                            />
+                        )}
 
+                    </div>
                 </div>
             </React.Fragment>
         )

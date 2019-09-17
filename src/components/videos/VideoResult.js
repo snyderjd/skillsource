@@ -7,13 +7,11 @@ class VideoResult extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="VideoResult-card">
-                    <h3>{this.props.video.snippet.title}</h3>
+                <div className="VideoResult-card result-card">
+                    <h3 className="ResultCard-heading">{this.props.video.snippet.title}</h3>
                     <p>{this.props.video.snippet.description}</p>
-                    <p>Date: {this.props.video.snippet.publishedAt}</p>
-                    <Link target="_blank" to={`//www.youtube.com/watch/${this.props.video.id.videoId}`}>
-                        Go To Resource
-                    </Link><br />
+                    <p>Date: {this.props.video.snippet.publishedAt.split("T")[0]}</p>
+                    <a target="_blank" href={`www.youtube.com/watch/${this.props.video.id.videoId}`}>Watch Video</a><br/>
                     <img src={this.props.video.snippet.thumbnails.default.url} alt="Video thumbnail"></img><br />
                     <VideoModal {...this.props} />
                 </div>
