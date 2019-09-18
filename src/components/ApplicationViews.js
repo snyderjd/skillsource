@@ -6,6 +6,7 @@ import ResourceList from './resources/ResourceList';
 import Search from './search/Search';
 import VideoSearch from './videos/VideoSearch';
 import WebSearch from './web/WebSearch';
+import SearchHome from './search/SearchHome';
 
 class ApplicationViews extends Component {
     state = {
@@ -19,7 +20,11 @@ class ApplicationViews extends Component {
             <React.Fragment>
                 
                 <Route exact path="/" render={props => {
-                    return <Auth {...props} />;
+                    return <SearchHome {...props} />
+                }} />
+
+                <Route exact path="/auth" render={props => {
+                    return <Auth {...props} login={this.props.login} />
                 }} />
 
                 <Route exact path="/skills" render={props => {

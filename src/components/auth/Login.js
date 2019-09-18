@@ -26,6 +26,7 @@ class Login extends Component {
                 this.props.history.push("/skills");
                 console.log("successful login");
                 window.location.reload();
+                this.props.login();
             } else {
                 alert("Invalid email or password.");
             }

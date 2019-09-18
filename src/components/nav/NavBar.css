@@ -16,7 +16,7 @@ Hex: #FDE100
 
 .navbar {
     z-index: 1000;
-    background-color: #28a745;
+    background-color: #20720D;
     color: white;
     font-weight: bold;
 }
@@ -38,4 +38,8 @@ Hex: #FDE100
 
 .NavBar-heading {
     font-family: 'PT Serif', serif;
+}
+
+.NavBar-logo {
+    width: 150px;
 }
