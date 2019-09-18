@@ -10,6 +10,7 @@ class SkillCard extends Component {
         if (this.props.skill.resources.length === 0) {
             return false
         }
+
         return this.props.skill.resources.every(resource => resource.isComplete)
     }
 

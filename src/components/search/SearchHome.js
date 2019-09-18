@@ -3,7 +3,6 @@ import './Search.css';
 import SearchDataManager from './SearchDataManager';
 import SkillDataManager from '../skills/SkillDataManager';
 import { Button } from 'reactstrap';
-import ResultCard from './ResultCard';
 import HomeResult from './HomeResult';
 
 class SearchHome extends Component {
@@ -53,6 +52,7 @@ class SearchHome extends Component {
                             className="searchInput"
                             type="text"
                             id="searchInput"
+                            placeholder="Search for a skill that you would like to learn!"
                             value={this.state.searchInput}
                             onChange={this.handleFieldChange}
                         />

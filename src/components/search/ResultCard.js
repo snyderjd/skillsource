@@ -4,19 +4,24 @@ import ResourceDataManager from '../resources/ResourceDataManager';
 import ResultView from './ResultView';
 import CopySkill from './CopySkill';
 import './Search.css';
+import UserDataManager from '../auth/UserDataManager';
 
 class ResultCard extends Component {
     state = {
         skill: {},
-        resources: []
+        resources: [],
+        creator: {}
     }
     
     componentDidMount() {
         SkillDataManager.getSkill(this.props.result.id).then(skill => {
             ResourceDataManager.getResources(this.props.result.id).then(resources => {
-                this.setState({
-                    skill: skill,
-                    resources: resources
+                UserDataManager.getUser(this.props.result.userId).then(user => {
+                    this.setState({
+                        skill: skill,
+                        resources: resources,
+                        creator: user
+                    })
                 })
             })
         })
@@ -41,6 +46,7 @@ class ResultCard extends Component {
                 <div className="result-card">
                     <h3 className="ResultCard-heading">{this.props.result.name}</h3>
                     <p>Description: {this.props.result.description} </p>
+                    <p>Creator: {this.state.creator.username}</p>
                     <p>Times Copied: {this.props.result.timesCopied}</p>
                     <ResultView {...this.props} resources={this.state.resources} />{' '}
                     

@@ -43,3 +43,7 @@ Hex: #FDE100
 .NavBar-logo {
     width: 150px;
 }
+
+.nav-img {
+    padding: 0;
+}
