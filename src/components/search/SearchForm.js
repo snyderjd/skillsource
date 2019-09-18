@@ -6,6 +6,7 @@ import VideoResult from '../videos/VideoResult';
 import WebResult from '../web/WebResult';
 import VideoDataManager from '../videos/VideoDataManager';
 import WebDataManager from '../web/WebDataManager';
+import SkillDataManager from '../skills/SkillDataManager';
 import './Search.css';
 
 class SearchForm extends Component {
@@ -14,7 +15,8 @@ class SearchForm extends Component {
         results: [],
         searchDomain: "",
         videoResults: [],
-        webResults: []
+        webResults: [],
+        allSkills: []
     }
 
     handleFieldChange = (event) => {
@@ -33,7 +35,8 @@ class SearchForm extends Component {
                 this.setState({ 
                     results: skills,
                     videoResults: [],
-                    webResults: []
+                    webResults: [],
+                    allSkills: []
                 })
             })
         } else if (this.state.searchDomain === "videos") {
@@ -41,7 +44,8 @@ class SearchForm extends Component {
                 this.setState({ 
                     videoResults: videos.items,
                     results: [],
-                    webResults: []
+                    webResults: [],
+                    allSkills: []
                 })
             })
         } else if (this.state.searchDomain === "web") {
@@ -49,7 +53,8 @@ class SearchForm extends Component {
                 this.setState({ 
                     webResults: results.items,
                     videoResults: [],
-                    results: []
+                    results: [],
+                    allSkills: []
                 })
             })
         } else {
@@ -58,6 +63,18 @@ class SearchForm extends Component {
 
     }
 
+    browseAllSkills = (event) => {
+        SkillDataManager.getAllSkills().then(allSkills => {
+            allSkills.sort((a, b) => b.timesCopied - a.timesCopied)
+            this.setState({
+                allSkills: allSkills,
+                results: [],
+                videoResults: [],
+                webResults: []
+            })
+        })
+    }
+    
     render() {
         return (
             <React.Fragment>
@@ -82,7 +99,8 @@ class SearchForm extends Component {
                             value={this.state.searchInput}
                             onChange={this.handleFieldChange}
                         />
-                        <Button onClick={this.executeSearch} color="success">Search</Button>
+                        <Button onClick={this.executeSearch} color="success">Search</Button>{' '}
+                        <Button onClick={this.browseAllSkills} color="success">Browse All Skills</Button>
                     </div>
                     <div className="resultContainer">
                         {this.state.results.map(result =>
@@ -106,6 +124,15 @@ class SearchForm extends Component {
                         {this.state.webResults.map(result =>
                             <WebResult
                                 key={result.cacheId}
+                                result={result}
+                                {...this.props}
+                            />
+                        )}
+                    </div>
+                    <div className="resultContainer">
+                        {this.state.allSkills.map(result =>
+                            <ResultCard
+                                key={result.id}
                                 result={result}
                                 {...this.props}
                             />
