@@ -1,19 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem
-} from 'reactstrap';
 // import UserDataManager from '../auth/UserDataManager';
 
 class NavBar extends Component {
@@ -42,19 +29,13 @@ class NavBar extends Component {
                 <h2 className="NavBar-heading">SkillSource</h2>
                 <ul className="navbar-nav d-flex justify-content-end">
                     <li className="nav-item">
-                        <h3 className="NavBar-username">{this.props.username}</h3>
-                    </li>
-                    <li className="nav-item">
                         <Link to="/skills" className="nav-link">My Skills</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/search" className="nav-link">Search</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/video" className="nav-link">Videos</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/web" className="nav-link">Web</Link>
+                        <h3 className="NavBar-username">{this.props.username}</h3>
                     </li>
                     <li className="nav-item">
                         <Link onClick={this.props.logout} to="/" className="nav-link">Logout</Link>

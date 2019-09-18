@@ -13,6 +13,11 @@ export default {
             .then(response => response.json());
     },
 
+    getAllSkills() {
+        return fetch(`${remoteURL}/skills`)
+            .then(response => response.json());
+    },
+
     getSkill(id) {
         return fetch(`${remoteURL}/skills/${id}`)
             .then(response => response.json());
