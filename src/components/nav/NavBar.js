@@ -23,7 +23,9 @@ class NavBar extends Component {
     render() {
         return (
             <nav className="navbar fixed-top navbar-expand d-flex justify-content-between">
-                <img className="NavBar-logo" src={require('./Logo.png')} alt="SkillSource Logo"/>
+                <Link to="/" className="nav-img">
+                    <img className="NavBar-logo" src={require('./Logo.png')} alt="SkillSource Logo" />
+                </Link>
                 <ul className="navbar-nav d-flex justify-content-end">
                     <li className="nav-item">
                         <Link to="/skills" className="nav-link">My Skills</Link>
@@ -59,19 +61,6 @@ class NavBar extends Component {
 
 export default NavBar;
 
-// {
-//     this.state.resources.map(resource =>
-//         <ResourceCard
-//             key={resource.id}
-//             resource={resource}
-//             deleteResource={this.deleteResource}
-//             editResource={this.editResource}
-//             {...this.props}
-//         />
-//     )
-// }
-
-{/* <h2 className="NavBar-heading">SkillSource</h2> */}
 
 
 

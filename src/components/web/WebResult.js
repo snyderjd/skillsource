@@ -10,7 +10,7 @@ class WebResult extends Component {
                     <h3 className="ResultCard-heading">{this.props.result.title}</h3>
                     <p>{this.props.result.snippet}</p>
                     <a target="_blank" rel="noopener noreferrer"
-                        href={this.props.result.link}>Go To Resource</a><br/>
+                        href={this.props.result.link}>{this.props.result.link}</a><br/>
                     <WebModal 
                         key={this.props.result.cacheId}
                         result={this.props.result}

@@ -11,7 +11,7 @@ class VideoResult extends Component {
                     <p>{this.props.video.snippet.description}</p>
                     <p>Date: {this.props.video.snippet.publishedAt.split("T")[0]}</p>
                     <a  target="_blank" rel="noopener noreferrer" 
-                        href={`www.youtube.com/watch/${this.props.video.id.videoId}`}>Watch Video</a><br/>
+                        href={`//www.youtube.com/watch/${this.props.video.id.videoId}`}>{`www.youtube.com/watch/${this.props.video.id.videoId}`}</a><br/>
                     <img src={this.props.video.snippet.thumbnails.default.url} alt="Video thumbnail"></img><br />
                     <VideoModal {...this.props} />
                 </div>
