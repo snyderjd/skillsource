@@ -7,7 +7,6 @@ class NavBar extends Component {
     constructor(props) {
         super(props);
 
-        this.toggle = this.toggle.bind(this);
         this.state = {
             isOpen: false,
             activeUserId: parseInt(sessionStorage.getItem("activeUserId")),
@@ -15,18 +14,16 @@ class NavBar extends Component {
         };
     }
 
-    toggle() {
-        this.setState({ isOpen: !this.state.isOpen });
-    }
-
     componentDidMount() {
         this.setState({ username: this.props.username })
     }
+
+    isAuthenticated = () => sessionStorage.getItem("activeUserId") !== null
     
     render() {
         return (
             <nav className="navbar fixed-top navbar-expand d-flex justify-content-between">
-                <h2 className="NavBar-heading">SkillSource</h2>
+                <img className="NavBar-logo" src={require('./Logo.png')} alt="SkillSource Logo"/>
                 <ul className="navbar-nav d-flex justify-content-end">
                     <li className="nav-item">
                         <Link to="/skills" className="nav-link">My Skills</Link>
@@ -37,9 +34,23 @@ class NavBar extends Component {
                     <li className="nav-item">
                         <h3 className="NavBar-username">{this.props.username}</h3>
                     </li>
+                    {/* <li className="nav-item">
+                        <Link to="/auth" className="nav-link">Login/Register</Link>
+                    </li>
                     <li className="nav-item">
                         <Link onClick={this.props.logout} to="/" className="nav-link">Logout</Link>
-                    </li>
+                    </li> */}
+
+                    { this.isAuthenticated() ? 
+
+                        <li className="nav-item">
+                            <Link onClick={this.props.logout} to="/" className="nav-link">Logout</Link>
+                        </li> :
+
+                        <li className="nav-item">
+                            <Link to="/auth" className="nav-link">Login/Register</Link>
+                        </li>
+                    }
                 </ul>
             </nav>
         )
@@ -48,39 +59,20 @@ class NavBar extends Component {
 
 export default NavBar;
 
+// {
+//     this.state.resources.map(resource =>
+//         <ResourceCard
+//             key={resource.id}
+//             resource={resource}
+//             deleteResource={this.deleteResource}
+//             editResource={this.editResource}
+//             {...this.props}
+//         />
+//     )
+// }
+
+{/* <h2 className="NavBar-heading">SkillSource</h2> */}
 
 
-{/* <div>
-    <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
-        <NavbarToggler onClick={this.toggle} />
-        <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-                <NavItem>
-                    <NavLink href="/components/">Components</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-                </NavItem>
-                <UncontrolledDropdown nav inNavbar>
-                    <DropdownToggle nav caret>
-                        Options
-                                </DropdownToggle>
-                    <DropdownMenu right>
-                        <DropdownItem>
-                            Option 1
-                                    </DropdownItem>
-                        <DropdownItem>
-                            Option 2
-                                    </DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>
-                            Reset
-                                    </DropdownItem>
-                    </DropdownMenu>
-                </UncontrolledDropdown>
-            </Nav>
-        </Collapse>
-    </Navbar>
-</div> */}
+
 

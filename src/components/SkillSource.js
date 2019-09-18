@@ -20,12 +20,16 @@ class SkillSource extends Component {
         sessionStorage.clear();
         this.setState({ username: "" })
     }
+
+    login = () => {
+        this.setState({ activeUserId: sessionStorage.getItem("activeUserId")})
+    }
     
     render() {
         return (
             <React.Fragment>
                 <NavBar {...this.props} logout={this.logout} username={this.state.username} />
-                <ApplicationViews />
+                <ApplicationViews login={this.login}/>
             </React.Fragment>
         )
     }
