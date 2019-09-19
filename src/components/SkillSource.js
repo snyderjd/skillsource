@@ -10,11 +10,11 @@ class SkillSource extends Component {
         username: ""
     }
     
-    componentDidMount() {
-        UserDataManager.getUser(this.state.activeUserId).then(user => {
-            this.setState({ username: user.username })
-        })
-    }
+    // componentDidMount() {
+    //     UserDataManager.getUser(this.state.activeUserId).then(user => {
+    //         this.setState({ username: user.username })
+    //     })
+    // }
 
     logout = () => {
         sessionStorage.clear();

@@ -13,11 +13,13 @@ class ResourceList extends Component {
         numResources: 0,
         pctComplete: 0,
         numComplete: 0,
-        userOwned: false
+        userOwned: false,
+        activeUserId: parseInt(sessionStorage.getItem("activeUserId"))
     }
 
     componentDidMount() {
-        SkillDataManager.checkSkillOwner(this.props.skillId, this.props.activeUserId).then(skills => {
+        console.log("ResourceList compDidMount", this.props.activeUserId)
+        SkillDataManager.checkSkillOwner(this.props.skillId, this.state.activeUserId).then(skills => {
             if (skills.length > 0) {
 
                 SkillDataManager.getSkill(this.props.skillId).then(skill => {
@@ -97,6 +99,7 @@ class ResourceList extends Component {
     }
 
     render() {
+        console.log("ResourceList state", this.state);
         return (
             <React.Fragment>
                 <div className="ResourceList-container">
@@ -105,9 +108,11 @@ class ResourceList extends Component {
                         <div className="text-center">You're {this.calcProgress()}% of the way towards completing this skill!</div>
                         <Progress value={`${this.calcProgress()}`} color="success" />
                     </div>
-                    <div className="ResourceModal-container">
-                        <ResourceModal {...this.props} addResource={this.addResource} userOwned={this.state.userOwned} />
-                    </div>
+                    {this.state.userOwned &&
+                        <div className="ResourceModal-container">
+                            <ResourceModal {...this.props} addResource={this.addResource} />
+                        </div>
+                    }
                     <div className="resource-card-container">
                         {this.state.resources.map(resource =>
                             <ResourceCard

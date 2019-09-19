@@ -37,7 +37,7 @@ class Register extends Component {
             };
 
             UserDataManager.postUser(newUserObject).then(() => {
-                this.props.history.push("/");
+                this.props.history.push("/auth");
             }).then(this.toggle).then(() => {
                 window.alert("Registration successful! Please Log In!")
             });
@@ -131,58 +131,3 @@ class Register extends Component {
 }
 
 export default Register;
-
-
-// import React from 'react';
-// import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-// import UserDataManager from './UserDataManager';
-// import './Login.css';
-
-// class RegisterModal extends React.Component {
-
-//     render() {
-//         return (
-//             <div>
-//                 <Button className="registerbtn" color="danger" onClick={this.toggle}>Register</Button>
-//                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-//                     <ModalHeader toggle={this.toggle}>Sign up</ModalHeader>
-//                     <ModalBody>
-//                         <form>
-//                             <fieldset>
-//                                 <div className="loginForm">
-//                                     <input onChange={this.handleFieldChange} type="email"
-//                                         id="email"
-//                                         placeholder="Email address"
-//                                         required
-//                                         autoFocus=""
-//                                     /><br />
-//                                     <input onChange={this.handleFieldChange} type="text"
-//                                         id="username"
-//                                         placeholder="Username"
-//                                         required
-//                                     /><br />
-//                                     <input onChange={this.handleFieldChange} type="password"
-//                                         id="password"
-//                                         placeholder="Password"
-//                                         required
-//                                     /><br />
-//                                     <input onChange={this.handleFieldChange} type="password"
-//                                         id="confirmPassword"
-//                                         placeholder="Confirm Password"
-//                                         required
-//                                     />
-//                                 </div>
-//                             </fieldset>
-//                         </form>
-//                     </ModalBody>
-//                     <ModalFooter>
-//                         <Button color="primary" onClick={this.handleRegister}>Sign up</Button>{' '}
-//                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-//                     </ModalFooter>
-//                 </Modal>
-//             </div>
-//         );
-//     }
-// }
-
-// export default RegisterModal;

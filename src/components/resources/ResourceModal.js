@@ -68,7 +68,7 @@ class ResourceModal extends Component {
     render() {
         return(
             <>
-                <Button onClick={this.toggle} color="success" disabled={!this.props.userOwned} size="lg" block>
+                <Button onClick={this.toggle} color="success" size="lg" block>
                     Add a Resource
                 </Button>
                 <Modal isOpen={this.state.modal}

@@ -9,7 +9,7 @@ class ResultResource extends Component {
                     <h3 className="ResultResource-heading">{this.props.resource.title}</h3>
                     <p>Type: {this.props.resource.type.typeName}</p>
                     <p>Summary: {this.props.resource.summary}</p>
-                    <a target="_blank" rel="noopener noreferrer" href={`//${this.props.resource.url}`}>{this.props.resource.url}</a>
+                    <a target="_blank" rel="noopener noreferrer" href={`${this.props.resource.url}`}>{this.props.resource.url}</a>
                 </div>
             </React.Fragment>
         )
