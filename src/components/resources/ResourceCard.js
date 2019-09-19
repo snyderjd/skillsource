@@ -42,13 +42,6 @@ class ResourceCard extends Component {
 
             const updatedResource = {
                 id: this.props.resource.id,
-                skillId: this.props.skillId,
-                typeId: parseInt(this.state.typeId),
-                otherType: this.state.otherType,
-                title: this.state.title,
-                summary: this.state.summary,
-                url: this.state.url,
-                content: this.state.content,
                 isComplete: this.state.isComplete
             }
 

@@ -134,9 +134,9 @@ class SearchForm extends Component {
                             )}
                         </div>
                         <div className="resultContainer">
-                            {this.state.webResults.map(result =>
+                            {this.state.webResults.map((result, idx) =>
                                 <WebResult
-                                    key={result.cacheId}
+                                    key={idx}
                                     result={result}
                                     {...this.props}
                                 />

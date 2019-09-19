@@ -35,7 +35,7 @@ export default {
 
     editResource(editedResource) {
         return fetch(`${remoteURL}/resources/${editedResource.id}`, {
-            method: "PUT",
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
