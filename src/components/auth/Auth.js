@@ -8,7 +8,7 @@ class Auth extends Component {
         return (
             <React.Fragment>
                 <div className="Auth-container">
-                    <Login {...this.props} />
+                    <Login {...this.props} login={this.props.login} />
                 </div>
             </React.Fragment>
         )
