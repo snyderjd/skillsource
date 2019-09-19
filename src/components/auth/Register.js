@@ -31,7 +31,8 @@ class Register extends Component {
                 email: this.state.email,
                 username: this.state.username,
                 password: this.state.password,
-                skillsComplete: 0
+                skillsComplete: 0,
+                skillsCopied: 0
             };
 
             UserDataManager.postUser(newUserObject).then(() => {
