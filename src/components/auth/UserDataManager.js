@@ -24,5 +24,15 @@ export default {
     checkUsers(email, password) {
         return fetch(`${remoteURL}/users?email=${email}&&password=${password}`)
             .then(response => response.json());
-    }
+    },
+
+    // editSkill(editedSkill) {
+    //     return fetch(`${remoteURL}/skills/${editedSkill.id}`, {
+    //         method: "PATCH",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(editedSkill)
+    //     }).then(response => response.json());
+    // },
 }

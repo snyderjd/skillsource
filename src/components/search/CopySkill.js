@@ -7,7 +7,8 @@ class CopySkill extends Component {
         this.state = {
             modal: false,
             activeUserId: parseInt(sessionStorage.getItem("activeUserId")),
-            newSkillId: 0
+            newSkillId: 0,
+            creator: {}
         }
 
         this.toggle = this.toggle.bind(this);

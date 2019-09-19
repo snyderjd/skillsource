@@ -42,7 +42,7 @@ class VideoModal extends Component {
             otherType: '',
             title: this.props.video.snippet.title,
             summary: this.props.video.snippet.description,
-            url: `https://www.youtube.com/embed/${this.props.video.id.videoId}`,
+            url: `https://www.youtube.com/watch/${this.props.video.id.videoId}`,
             content: this.state.content,
             isComplete: false
         }
