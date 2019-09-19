@@ -18,7 +18,6 @@ class ResourceList extends Component {
     }
 
     componentDidMount() {
-        console.log("ResourceList compDidMount", this.props.activeUserId)
         SkillDataManager.checkSkillOwner(this.props.skillId, this.state.activeUserId).then(skills => {
             if (skills.length > 0) {
 
@@ -99,7 +98,6 @@ class ResourceList extends Component {
     }
 
     render() {
-        console.log("ResourceList state", this.state);
         return (
             <React.Fragment>
                 <div className="ResourceList-container">

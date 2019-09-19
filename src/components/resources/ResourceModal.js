@@ -28,7 +28,6 @@ class ResourceModal extends Component {
         const newState = {};
         newState[event.target.id] = event.target.value;
         this.setState(newState)
-        console.log("handleFieldChange", this.state);
     }
 
     buildNewResource = (event) => {
