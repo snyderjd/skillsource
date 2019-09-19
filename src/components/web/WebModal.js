@@ -3,6 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import TypeDataManager from '../resources/TypeDataManager';
 import ResourceDataManager from '../resources/ResourceDataManager';
 import SkillDataManager from '../skills/SkillDataManager';
+import WebSkillModal from './WebSkillModal';
 
 class WebModal extends Component {
     constructor(props) {
@@ -51,6 +52,14 @@ class WebModal extends Component {
         ResourceDataManager.saveResource(newResource).then(this.toggle);
     }
 
+    addSkill = (skillObject) => {
+        return SkillDataManager.postSkill(skillObject).then(() => {
+            SkillDataManager.getSkillsAndResources(this.state.activeUserId).then(skills => {
+                this.setState({ skills: skills });
+            });
+        });
+    }
+
     componentDidMount() {
         TypeDataManager.getTypes().then(types => {
             SkillDataManager.getSkills(this.state.activeUserId).then(skills => {
@@ -79,7 +88,7 @@ class WebModal extends Component {
                         <form>
                             <div className="WebModal-inputs">
                                 <div className="WebModal-input-pair">
-                                    <label htmlFor="skillId">Please select which skill you would like to add this to:</label>
+                                    <label htmlFor="skillId">Please select which skill you would like to add this video to, or create a new skill for this resource.</label>
                                     <select
                                         id="skillId"
                                         value={this.state.skillId}
@@ -93,6 +102,7 @@ class WebModal extends Component {
                                             </option>
                                         )}
                                     </select>
+                                    <WebSkillModal {...this.props} addSkill={this.addSkill} />
                                 </div>
                                 <div className="WebModal-input-pair">
                                     <p>Title</p>

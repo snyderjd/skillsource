@@ -4,7 +4,6 @@ const remoteURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&&ma
 
 export default {
     getVideos(searchInput) {
-        console.log(`${remoteURL}${API.key}&q=${searchInput}`)
 
         return fetch(`${remoteURL}${API.key}&q=${searchInput}`)
             .then(response => response.json())
