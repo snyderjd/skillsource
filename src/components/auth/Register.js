@@ -18,6 +18,7 @@ class Register extends Component {
     }
 
     handleRegister = (event) => {
+        // If inputs are valid, create new user object and save to the database
         event.preventDefault();
 
         if (this.state.password !== this.state.confirmPassword) {
@@ -32,7 +33,7 @@ class Register extends Component {
                 username: this.state.username,
                 password: this.state.password,
                 skillsComplete: 0,
-                skillsCopied: 0
+                timesCopied: 0
             };
 
             UserDataManager.postUser(newUserObject).then(() => {
