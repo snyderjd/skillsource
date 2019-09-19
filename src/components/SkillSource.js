@@ -23,6 +23,12 @@ class SkillSource extends Component {
 
     login = () => {
         this.setState({ activeUserId: sessionStorage.getItem("activeUserId")})
+        UserDataManager.getUser(this.state.activeUserId).then(user => {
+            this.setState({
+                username: user.username,
+                activeUserId: sessionStorage.getItem("activeUserId")
+            })
+        })
     }
     
     render() {

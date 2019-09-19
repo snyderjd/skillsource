@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import SkillDataManager from '../skills/SkillDataManager';
 import ResourceDataManager from '../resources/ResourceDataManager';
+import VideoSkillModal from './VideoSkillModal';
 import './Video.css';
 
 class VideoModal extends Component {
@@ -50,6 +51,14 @@ class VideoModal extends Component {
         ResourceDataManager.saveResource(newResource).then(this.toggle);
     }
 
+    addSkill = (skillObject) => {
+        return SkillDataManager.postSkill(skillObject).then(() => {
+            SkillDataManager.getSkillsAndResources(this.state.activeUserId).then(skills => {
+                this.setState({ skills: skills });
+            });
+        });
+    }
+
     componentDidMount() {
         SkillDataManager.getSkills(this.state.activeUserId).then(skills => {
             this.setState({ skills: skills })
@@ -71,7 +80,7 @@ class VideoModal extends Component {
                         <form>
                             <div className="VideoModal-inputs">
                                 <div className="VideoModal-input-pair">
-                                    <label htmlFor="type">Please select which skill you would like to add this video to:</label>
+                                    <label htmlFor="type">Please select which skill you would like to add this video to, or create a new skill for this video</label>
                                     <select
                                         id="skillId"
                                         value={this.state.skillId}
@@ -85,6 +94,7 @@ class VideoModal extends Component {
                                             </option>
                                         )}
                                     </select>
+                                    <VideoSkillModal {...this.props} addSkill={this.addSkill} />
                                 </div>
                                 <div className="VideoModal-info">
                                     <p>Title: {this.props.video.snippet.title}</p>
