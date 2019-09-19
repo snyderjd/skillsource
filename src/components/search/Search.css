@@ -1,5 +1,12 @@
 /* Styling for Search components */
 
+.SearchForm-parent-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+}
+
 .SearchForm-container {
     width: 80%;
     margin: auto;
@@ -44,6 +51,10 @@
     margin-bottom: 20px;
 }
 
-.ResultCard-heading, .ResultResource-heading {
+.ResultCard-heading, .ResultResource-heading, .TopCreators-heading {
     font-family: 'PT Serif', serif;
+}
+
+.TopCreators-heading {
+    text-align: center;
 }

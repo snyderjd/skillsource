@@ -25,8 +25,6 @@ class CopySkill extends Component {
             timesCopied: newSkillsCopied
         }
     
-        console.log("creator", this.props.creator)
-
         this.props.editCreator(updatedUser)
     }
 
