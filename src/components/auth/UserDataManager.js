@@ -26,13 +26,14 @@ export default {
             .then(response => response.json());
     },
 
-    // editSkill(editedSkill) {
-    //     return fetch(`${remoteURL}/skills/${editedSkill.id}`, {
-    //         method: "PATCH",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(editedSkill)
-    //     }).then(response => response.json());
-    // },
+    editUser(userObject) {
+        return fetch(`${remoteURL}/users/${userObject.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userObject)
+        }).then(response => response.json());
+    }
+
 }

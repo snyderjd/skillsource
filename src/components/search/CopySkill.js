@@ -7,8 +7,7 @@ class CopySkill extends Component {
         this.state = {
             modal: false,
             activeUserId: parseInt(sessionStorage.getItem("activeUserId")),
-            newSkillId: 0,
-            creator: {}
+            newSkillId: 0
         }
 
         this.toggle = this.toggle.bind(this);
@@ -16,6 +15,17 @@ class CopySkill extends Component {
 
     toggle() {
         this.setState(prevState => ({ modal: !prevState.modal }));
+    }
+
+    incrementUser = () => {
+        // increment skillsCopied for the user whose skill is copied
+        let newSkillsCopied = this.props.creator.timesCopied + 1;
+        const updatedUser = {
+            id: this.props.creator.id,
+            timesCopied: newSkillsCopied
+        }
+    
+        this.props.editCreator(updatedUser)
     }
 
     incrementCounter = () => {
@@ -31,6 +41,7 @@ class CopySkill extends Component {
 
     handleSubmit = () => {
         this.incrementCounter();
+        this.incrementUser();
         
         // create object for the copied skill with activeUser's id
         const newSkill = {

@@ -37,7 +37,7 @@ class ResultCard extends Component {
 
     editCreator = (userObject) => {
         // write function that PATCHES the user object with an incremented counter for times their skill has been copied
-        
+        return UserDataManager.editUser(userObject);
     }
 
     copyResource = (resourceObject) => {
@@ -62,7 +62,9 @@ class ResultCard extends Component {
                         resources={this.state.resources}
                         copySkill={this.copySkill}
                         editOriginalSkill={this.editOriginalSkill}
-                        copyResource={this.copyResource} />
+                        copyResource={this.copyResource}
+                        creator={this.state.creator}
+                        editCreator={this.editCreator} />
                     }
                 </div>
             </React.Fragment>

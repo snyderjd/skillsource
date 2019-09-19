@@ -12,7 +12,8 @@ class ResourceList extends Component {
         resources: [],
         numResources: 0,
         pctComplete: 0,
-        numComplete: 0
+        numComplete: 0,
+        userOwned: false
     }
 
     componentDidMount() {
@@ -25,7 +26,8 @@ class ResourceList extends Component {
                             skill: skill,
                             resources: resources,
                             numResources: resources.length,
-                            isComplete: skill.isComplete
+                            isComplete: skill.isComplete,
+                            userOwned: true
                         });
                     });
                 });
@@ -104,7 +106,7 @@ class ResourceList extends Component {
                         <Progress value={`${this.calcProgress()}`} color="success" />
                     </div>
                     <div className="ResourceModal-container">
-                        <ResourceModal {...this.props} addResource={this.addResource} />
+                        <ResourceModal {...this.props} addResource={this.addResource} userOwned={this.state.userOwned} />
                     </div>
                     <div className="resource-card-container">
                         {this.state.resources.map(resource =>
