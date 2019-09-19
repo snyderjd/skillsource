@@ -50,7 +50,7 @@ class ResourceList extends Component {
     }
 
     deleteResource = (id) => {
-        ResourceDataManager.deleteResource(id).then(() => {
+        return ResourceDataManager.deleteResource(id).then(() => {
             SkillDataManager.getSkill(this.props.skillId).then(skill => {
                 ResourceDataManager.getResources(this.props.skillId).then(resources => {
                     this.setState({

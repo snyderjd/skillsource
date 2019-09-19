@@ -35,6 +35,11 @@ class ResultCard extends Component {
         return SkillDataManager.editSkill(skillObject);
     }
 
+    editCreator = (userObject) => {
+        // write function that PATCHES the user object with an incremented counter for times their skill has been copied
+        
+    }
+
     copyResource = (resourceObject) => {
         return ResourceDataManager.saveResource(resourceObject);
     }

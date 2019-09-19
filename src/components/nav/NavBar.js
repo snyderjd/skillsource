@@ -22,39 +22,34 @@ class NavBar extends Component {
     
     render() {
         return (
-            <nav className="navbar fixed-top navbar-expand d-flex justify-content-between">
-                <Link to="/" className="nav-img">
-                    <img className="NavBar-logo" src={require('./Logo.png')} alt="SkillSource Logo" />
-                </Link>
-                <ul className="navbar-nav d-flex justify-content-end">
-                    <li className="nav-item">
-                        <Link to="/skills" className="nav-link">My Skills</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/search" className="nav-link">Search</Link>
-                    </li>
-                    <li className="nav-item">
-                        <h3 className="NavBar-username">{this.props.username}</h3>
-                    </li>
-                    {/* <li className="nav-item">
-                        <Link to="/auth" className="nav-link">Login/Register</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link onClick={this.props.logout} to="/" className="nav-link">Logout</Link>
-                    </li> */}
-
-                    { this.isAuthenticated() ? 
-
-                        <li className="nav-item">
-                            <Link onClick={this.props.logout} to="/" className="nav-link">Logout</Link>
-                        </li> :
-
-                        <li className="nav-item">
-                            <Link to="/auth" className="nav-link">Login/Register</Link>
-                        </li>
-                    }
-                </ul>
-            </nav>
+            <React.Fragment>
+                <nav className="navbar fixed-top navbar-expand d-flex justify-content-between">
+                    <Link to="/" className="nav-img">
+                        <img className="NavBar-logo" src={require('./Logo.png')} alt="SkillSource Logo" />
+                    </Link>
+                    <ul className="navbar-nav d-flex justify-content-end">
+                        { this.isAuthenticated() ? 
+                        <>
+                            <li className="nav-item">
+                                <Link to="/skills" className="nav-link">My Skills</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/search" className="nav-link">Search</Link>
+                            </li>
+                            <li className="nav-item">
+                                <h3 className="NavBar-username">{this.props.username}</h3>
+                            </li>
+                            <li className="nav-item">
+                                <Link onClick={this.props.logout} to="/" className="nav-link">Logout</Link>
+                            </li>
+                        </> :
+                            <li className="nav-item">
+                                <Link to="/auth" className="nav-link">Login/Register</Link>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </React.Fragment>
         )
     }
 }
