@@ -45,7 +45,6 @@ class ResultCard extends Component {
     }
 
     render() {
-        console.log("ResultCard", this.state);
         return (
             <React.Fragment>
                 <div className="result-card">
