@@ -3,3 +3,9 @@
 .WebModal-openButton {
     margin-top: 10px;
 }
+
+.WebModal-input-pair {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}

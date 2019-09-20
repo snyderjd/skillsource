@@ -127,16 +127,18 @@ class ResourceModal extends Component {
                                     )}
                                 </select>
                             </div>
-                            <div className="ResourceModal-input-pair">
-                                <label htmlFor="otherType">Other</label>
-                                <input onChange={this.handleFieldChange}
-                                    type="text"
-                                    id="otherType"
-                                    value={this.state.otherType}
-                                    placeholder="If other, please specify"
-                                    className="ResourceModal-input"
-                                />
-                            </div>
+                            {parseInt(this.state.typeId) === 6 &&
+                                <div className="ResourceModal-input-pair">
+                                    <label htmlFor="otherType">Other</label>
+                                    <input onChange={this.handleFieldChange}
+                                        type="text"
+                                        id="otherType"
+                                        value={this.state.otherType}
+                                        placeholder="If other, please specify"
+                                        className="ResourceModal-input"
+                                    />
+                                </div>
+                            }
                         </div>
                     </form>
                 </ModalBody>

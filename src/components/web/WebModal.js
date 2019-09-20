@@ -4,6 +4,7 @@ import TypeDataManager from '../resources/TypeDataManager';
 import ResourceDataManager from '../resources/ResourceDataManager';
 import SkillDataManager from '../skills/SkillDataManager';
 import WebSkillModal from './WebSkillModal';
+import './Web.css';
 
 class WebModal extends Component {
     constructor(props) {
@@ -87,12 +88,11 @@ class WebModal extends Component {
                     <ModalBody>
                         <form>
                             <div className="WebModal-inputs">
-                                <div className="WebModal-input-pair">
+                                <div className="WebModal-select">
                                     <label htmlFor="skillId">Please select which skill you would like to add this video to, or create a new skill for this resource.</label>
                                     <select
                                         id="skillId"
                                         value={this.state.skillId}
-                                        className="WebModal-input"
                                         onChange={this.handleFieldChange}
                                     >
                                         <option>Select Skill</option>
@@ -102,19 +102,16 @@ class WebModal extends Component {
                                             </option>
                                         )}
                                     </select>
-                                    <WebSkillModal {...this.props} addSkill={this.addSkill} />
+                                </div>
+                                <WebSkillModal {...this.props} addSkill={this.addSkill} />
+                                <div className="WebModal-input-pair">
+                                    <p>Title: {this.props.result.title}</p>
                                 </div>
                                 <div className="WebModal-input-pair">
-                                    <p>Title</p>
-                                    <p>{this.props.result.title}</p>
+                                    <p>URL: {this.props.result.link}</p>
                                 </div>
                                 <div className="WebModal-input-pair">
-                                    <p>URL</p>
-                                    <p>{this.props.result.link}</p>
-                                </div>
-                                <div className="WebModal-input-pair">
-                                    <p>Summary</p>
-                                    <p>{this.props.result.snippet}</p>
+                                    <p>Summary: {this.props.result.snippet}</p>
                                 </div>
                                 <div className="WebModal-input-pair">
                                     <label htmlFor="type">Type</label>
@@ -132,16 +129,18 @@ class WebModal extends Component {
                                         )}
                                     </select>
                                 </div>
-                                <div className="WebModal-input-pair">
-                                    <label htmlFor="otherType">Other</label>
-                                    <input onChange={this.handleFieldChange}
-                                        type="text"
-                                        id="otherType"
-                                        value={this.state.otherType}
-                                        placeholder="If other, please specify"
-                                        className="WebModal-input"
-                                    />
-                                </div>
+                                {parseInt(this.state.typeId) === 6 &&
+                                    <div className="WebModal-input-pair">
+                                        <label htmlFor="otherType">Other</label>
+                                        <input onChange={this.handleFieldChange}
+                                            type="text"
+                                            id="otherType"
+                                            value={this.state.otherType}
+                                            placeholder="If other, please specify"
+                                            className="WebModal-input"
+                                        />
+                                    </div>
+                                }
                             </div>
                         </form>
                     </ModalBody>
