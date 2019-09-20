@@ -80,7 +80,7 @@ class VideoModal extends Component {
                         <form>
                             <div className="VideoModal-inputs">
                                 <div className="VideoModal-input-pair">
-                                    <label htmlFor="type">Please select which skill you would like to add this video to, or create a new skill for this video</label>
+                                    <label htmlFor="type">Please select which skill you would like to add this video to, or create a new skill for this video.</label>
                                     <select
                                         id="skillId"
                                         value={this.state.skillId}
