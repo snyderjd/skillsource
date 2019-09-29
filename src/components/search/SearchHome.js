@@ -43,9 +43,13 @@ class SearchHome extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="SearchForm-container">
+                <div className="SearchHome-container">
                     <div className="SearchHome-logo-container">
                         <img src={require('./Logo.png')} alt="SkillSource Logo"/>
+                    </div>
+                    <div className="SearchHome-info">
+                        <h1 className="SearchHome-info-heading">Welcome to SkillSource!</h1>
+                        <p className="SearchHome-info-text">SkillSource is a way for users to plan, organize, and document their learning efforts! Design your own approach by creating a skill and adding resources to it (such as articles, videos, or online courses), or search the site to see what's already been added by other users. Feel free to browse the site by searching below, or log in/register to get started!</p>
                     </div>
                     <div className="SearchForm-input-container">
                         <input

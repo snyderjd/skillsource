@@ -92,6 +92,7 @@ class SearchForm extends Component {
             <React.Fragment>
                 <div className="SearchForm-parent-container">
                     <div className="SearchForm-container">
+                        <h1 className="SearchForm-heading">Search for Skills, Videos, or Other Web Content</h1>
                         <div className="SearchForm-input-container">
                             <label htmlFor="type">Search For</label>
                             <select

@@ -3,6 +3,9 @@
 .SkillList-container {
     width: 80%;
     margin: auto;
+    background: rgb(233, 226, 226);
+    margin-top: 20px;
+    border: 4px solid #20720D;
 }
 
 .skills-container {
@@ -14,9 +17,9 @@
 
 .skill-card {
     width: 40%;
-    background-color: whitesmoke;
+    background-color: white;
     padding: 20px;
-    border: 4px solid #20720D;
+    border: 2px solid #20720D;
     margin: 20px;
 }
 
@@ -28,8 +31,9 @@
     margin: auto;
     width: 20%;
     text-align: center;
-    color: #20720D;
+    color: black;
     font-family: 'PT Serif', serif;
+    padding-top: 20px;
 }
 
 .SkillModal-container {

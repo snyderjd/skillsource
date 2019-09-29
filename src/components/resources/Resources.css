@@ -3,6 +3,9 @@
 .ResourceList-container {
     width: 80%;
     margin: auto;
+    background: rgb(233, 226, 226);
+    margin-top: 20px;
+    border: 4px solid #20720D;
 }
 
 .resource-card-container {
@@ -13,9 +16,9 @@
 
 .resource-card {
     width: 90%;
-    background-color: whitesmoke;
+    background-color: white;
     padding: 20px;
-    border: 4px solid #20720D;
+    border: 2px solid #20720D;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -33,8 +36,9 @@
 .ResourceList-heading {
     margin: auto;
     text-align: center;
-    color: #20720D;
+    color: black;
     font-family: 'PT Serif', serif;
+    margin-top: 20px;
 }
 
 .ResourceModal-input-pair {
@@ -45,4 +49,9 @@
 
 .ResourceModal-input {
     width: 70%;
+}
+
+.progress-bar-container {
+    width: 80%;
+    margin: auto;
 }
