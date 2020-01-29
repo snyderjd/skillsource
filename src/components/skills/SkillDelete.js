@@ -30,7 +30,8 @@ class SkillDelete extends Component {
         event.preventDefault();
         this.toggle();
 
-        // this.deleteResources(this.props.skill.id);
+        // Manually remove the modal-open class - which was preventing scrolling after closing the modal
+        document.body.classList.remove('modal-open');
 
         this.props.deleteSkill(this.props.skill.id);
     }

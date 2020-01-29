@@ -18,6 +18,8 @@ class ResourceDelete extends Component {
     handleDelete = (event) => {
         event.preventDefault();
         this.toggle();
+        // Manually remove the modal-open class - which was preventing scrolling after closing the modal
+        document.body.classList.remove('modal-open');
         this.props.deleteResource(this.props.resource.id);
     }
 
