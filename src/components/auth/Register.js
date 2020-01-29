@@ -69,7 +69,7 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <Button onClick={this.toggle} color="success" >Register</Button>
+                <Button onClick={this.toggle} color="success" className="auth-register" >Register</Button>
                  <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                      <ModalHeader toggle={this.toggle}>Register New Account</ModalHeader>
                      <ModalBody>
@@ -83,7 +83,7 @@ class Register extends Component {
                                         placeholder="Email address"
                                         required
                                         autoFocus=""
-                                        className="Login-input"
+                                        className="Login-input registerModal-email"
                                     />
                                 </div>
                                 <div className="Login-inputs-group">
@@ -93,7 +93,7 @@ class Register extends Component {
                                         value={this.state.username}
                                         placeholder="Username"
                                         required
-                                        className="Login-input"
+                                        className="Login-input registerModal-username"
                                     />
                                 </div>
                                 <div className="Login-inputs-group">
@@ -103,7 +103,7 @@ class Register extends Component {
                                         value={this.state.password}
                                         placeholder="Password"
                                         required
-                                        className="Login-input"
+                                        className="Login-input registerModal-password"
                                     />
                                 </div>
                                 <div className="Login-inputs-group">
@@ -113,14 +113,14 @@ class Register extends Component {
                                         value={this.state.confirmPassword}
                                         placeholder="Confirm Password"
                                         required
-                                        className="Login-input"
+                                        className="Login-input registerModal-confirmPassword"
                                     />
                                 </div>
                             </div>
                         </form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={this.handleRegister} color="success">Register</Button>{' '}
+                        <Button onClick={this.handleRegister} color="success" className="registerModal-submit">Register</Button>{' '}
                         <Button onClick={this.toggle} color="success">Cancel</Button>
                     </ModalFooter>
                 </Modal>
